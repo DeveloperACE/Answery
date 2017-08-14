@@ -9,6 +9,8 @@
 <p id="subtitle">-a simple webapp for people who like answering random questions-</p>
 <hr>
 
+<h2>Would you please insert a question here?</h2>
+
 <?php
     require("questions.php");
 
@@ -19,7 +21,7 @@
 
  ?>
     <footer>
-        Remember to copy your answers if you want to save them after you are done because they are NOT saved.
+        <a href="#">New Question</a>
     </footer>
 </body>
 </html>
