@@ -20,8 +20,12 @@
 
 
  ?>
+ <textarea> </textarea>
     <footer>
-        <a href="#">New Question</a>
+        <form action="#" method="get">
+            <input type="hidden" name="cat" value="true"></input>
+            <input type="submit" value="New Question"></input>
+        </form>
     </footer>
 </body>
 </html>
