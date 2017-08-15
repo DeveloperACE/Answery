@@ -38,8 +38,8 @@ echo '<img id="cat" src="' . $catPath . '"/>';
         <form action="#" method="get">
             <?php if(!isset($_GET["cat"])) {?>
             <input type="hidden" name="cat" value="true"></input>
-            <input type="submit" value="New Question"></input>
         <?php } ?>
+            <input type="submit" value="Continue >"></input>
         </form>
     </footer>
 </body>
