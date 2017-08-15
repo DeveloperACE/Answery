@@ -26,6 +26,11 @@ h2{ font-size: 1.25em;}
     text-align: center;
 }
 
+img#cat {
+    width:33%;
+    margin: 0 auto;
+    display: block;
+}
 
 textarea {
     background-image: url("http://2.bp.blogspot.com/-QkCoXoBvbxA/VLAQzOgQVLI/AAAAAAAAC_8/YIXjaEbbALk/s1600/8621_chalkboard.jpg");
