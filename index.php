@@ -14,14 +14,14 @@
     require("questions.php");
 
 //var_dump($_POST);
-    //get Cat
-    $catPath = file_get_contents('http://random.cat/meow');
-    $catPath = json_decode($catPath, true);
-    $catPath = $catPath["file"];
+
 
 if(isset($_GET["cat"])) {
+    //get Cat
+    $catPath = json_decode(file_get_contents('http://random.cat/meow'), true);
+    $catPath = $catPath["file"];
 
-echo '<img id="cat" src="' . $catPath . '"/>';
+    echo '<img id="cat" src="' . $catPath . '"/>';
 } else {
 
 
