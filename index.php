@@ -36,14 +36,15 @@ if(isset($_GET["cat"])) {
     }
  }
  ?>
-
-    <footer>
-        <form action="#" method="get">
-            <?php if(!isset($_GET["cat"])) {?>
-            <input type="hidden" name="cat" value="true"></input>
-        <?php } ?>
-            <input type="submit" value="Continue >"></input>
-        </form>
-    </footer>
+ <form action="#" method="get">
+     <?php if(!isset($_GET["cat"])) {
+         echo '<input type="hidden" name="cat" value="true"></input>';
+     } ?>
+     <input type="submit" value="Continue >"></input>
+ </form>
+ <footer>
+     <small>Copyright &copy; Adrian Edwards 2017. <a href="http://github.com/DeveloperACE/Answery">View the Source Code!</a></small>
+   </p>
+</footer>
 </body>
 </html>

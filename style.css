@@ -10,7 +10,7 @@ background-repeat: no-repeat;
 background-size: 100% 100%;
 }
 body {
-    color: e0dbd1;
+    color: #e0dbd1;
     font-size: 150%;
     font-family: "Papyrus", sans-serif;
 }
@@ -38,32 +38,27 @@ textarea {
     font-size: .75em;
     /*border: 10px solid;*/
     color: e0dbd1;
-    margin: 5% auto;
+    margin: 20px auto;
     width: 33%;
     height: 33%;
     display: block;
+}
+
+form {
+    width: 140px;
+    margin: 0 auto;
 }
 input[type="submit"] {
 
      background:none;
      color:red;
      border:none;
-     padding:0;
-     margin: 15px 32px;
      font: inherit;
-
-    float: right;
-
      cursor: pointer;
      text-decoration: none;
 }
 a {
-    font-family: "Chalkduster","Bradley Hand ITC TT", cursive;
-    color: red;
-    text-decoration: none;
-    padding: 15px 32px;
-    display: inline-block;
-    float: right;
+    color: white;
 }
 a:hover, input[type="submit"]:hover {
 
