@@ -17,20 +17,23 @@
 
 
 if(isset($_GET["cat"])) {
-    //get Cat
+    //get the json contents of the random.cat API and save it to a variable as an array
     $catPath = json_decode(file_get_contents('http://random.cat/meow'), true);
     $catPath = $catPath["file"];
 
     echo '<img id="cat" src="' . $catPath . '"/>';
 } else {
 
+    //manual override because only short answer has been implemented
+    $questionTypePicker = 0;//mt_rand(0, count($questions)-1);
+    //gets a random question from the question array
+    $questionIndex = mt_rand(0, count($questions[$questionTypePicker])-1);
+    $question = $questions[$questionTypePicker][$questionIndex];
 
- ?>
- <h2>Would you please insert a question here?</h2>
-
- <textarea> </textarea>
- <?php
-
+    if ($questionTypePicker == 0) {
+         echo "<h2>" . $question . "</h2>";
+         echo "<textarea></textarea>";
+    }
  }
  ?>
 
