@@ -53,8 +53,7 @@ input[type="submit"] {
      font: inherit;
 
     float: right;
-     /*border is optional*/
-     border-bottom:1px solid #444;
+
      cursor: pointer;
      text-decoration: none;
 }
@@ -66,7 +65,7 @@ a {
     display: inline-block;
     float: right;
 }
-a:hover {
+a:hover, input[type="submit"]:hover {
 
     text-decoration: underline;
     font-weight: bold;
