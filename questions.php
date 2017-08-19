@@ -19,8 +19,6 @@ $questions = array(
             "question" => "Which of these dogs is cuter?",
             "randomFromAPI" => "https://random.dog/woof.json"
         )
-        //https://random.dog/woof.json
-        //{"url":"https://random.dog/6d7c676e-e48d-4e53-9f4d-46561ce429c1.JPG"}
     )
     //other type???
 );

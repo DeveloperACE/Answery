@@ -12,7 +12,7 @@
 {nocache}
     {if isset($catpath)}
     <h2>Here's your reward cat!</h2>
-        <img id="cat" src="{$catpath}" />
+        <img id="rewardcat" src="{$catpath}" />
 
     {else}
     <h2>{$questionText}</h2>
@@ -22,7 +22,7 @@
         <form class="multiplechoice" style="width: 75%;">
             {foreach from=$choices key=$key item=$value}
 
-                <label class="multiplechoice"><input type="radio" name="multiplechoice"><img class="MCImage" src="{$choices[$key]}"></label><br>
+                <label class="multiplechoice"><input type="radio" name="multiplechoice"><img class="multiplechoiceimage" src="{$choices[$key]}"></label><br>
             {/foreach}
         </form>
 
