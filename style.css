@@ -47,6 +47,7 @@ img#rewardcat {
 }
 form.multiplechoice {
     width: 80%;
+    padding-bottom: 10vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -60,7 +61,7 @@ label.multiplechoice {
     flex-grow: 1;
     flex-basis: content;
     max-width: 33%;
-    max-height: 25%;
+    max-height: 30%;
 }
 img.multiplechoiceimage {
     max-width: 100%;
