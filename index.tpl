@@ -7,14 +7,16 @@
 <body>
     <h1>Answery</h1>
     <p id="subtitle">-a simple webapp for people who like answering random questions-</p>
+     <a id="viewsource" href="http://github.com/DeveloperACE/Answery">View the Source Code!</a>
     <hr>
 {nocache}
     {if isset($catpath)}
+    <h2>Here's your reward cat!</h2>
         <img id="cat" src="{$catpath}" />
 
     {else}
+    <h2>{$questionText}</h2>
         {if $questionTypeID eq 0}
-        <h2>{$question}</h2>
         <textarea></textarea>
         {/if}
     {/if}
@@ -27,9 +29,6 @@
     </form>
 
 {/nocache}
-    <footer>
-        <small>Copyright &copy; Adrian Edwards 2017. <a href="http://github.com/DeveloperACE/Answery">View the Source Code!</a></small>
-      </p>
-    </footer>
+
 </body>
 </html>
