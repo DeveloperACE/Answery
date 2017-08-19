@@ -20,7 +20,7 @@
         {if $questionTypeID eq 0}
         <textarea></textarea>
         {elseif $questionTypeID eq 1}
-        <form class="multiplechoice" style="width: 75%;">
+        <form class="multiplechoice">
             {foreach from=$choices key=$key item=$value}
 
                 <label class="multiplechoice"><input type="radio" name="multiplechoice"><img class="multiplechoiceimage" src="{$choices[$key]}"></label><br>
@@ -29,14 +29,14 @@
 
         {/if}
     {/if}
-
-    <form action="#" method="get">
+<footer>
+    <form id="continue" action="#" method="get">
         {if !$isCatSet}
             <input type="hidden" name="cat" value="true"></input>
         {/if}
         <input type="submit" value="Continue >"></input>
     </form>
-
+</footer>
 {/nocache}
 
 </body>

@@ -9,6 +9,8 @@ html {
 background-image: url("http://4.bp.blogspot.com/-vxWMBjUjE6c/VLAQyoleS5I/AAAAAAAAC_4/K8H4r2GgvJk/s1600/tma-chalkboard.jpg");
 background-repeat: no-repeat;
 background-size: 100% 100%;
+background-attachment: fixed;
+
 }
 body {
     color: #e0dbd1;
@@ -34,7 +36,9 @@ h2{ font-size: 1.25em;}
 
 
 
-
+form {
+    margin: 0 auto;
+}
 img#rewardcat {
     max-width:80%;
     max-height:65%;
@@ -42,6 +46,7 @@ img#rewardcat {
     display: block;
 }
 form.multiplechoice {
+    width: 80%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -60,6 +65,7 @@ label.multiplechoice {
 img.multiplechoiceimage {
     max-width: 100%;
     max-height: 100%;
+    margin: 0 auto;
 }
 
 /* replace multiple choice radio buttons with images */
@@ -86,15 +92,34 @@ textarea {
     /*border: 10px solid;*/
     color: e0dbd1;
     margin: 20px auto;
-    width: 33%;
-    height: 33%;
+    height: 100px;/*double the default height*/
     display: block;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media (min-width:0px) and (max-width: 768px) {
+    textarea {width: 90%;}
+    form.multiplechoice {width: 100%;}
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 992px) {
+    textarea {width: 70%;}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1200px) {
+    textarea {width: 50%;}
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    textarea {width: 33%;}
 }
 
 /* Footer */
 form#continue {
     width: 140px;
-    margin: 0 auto;
 }
 input[type="submit"] {
 
@@ -121,6 +146,5 @@ footer {
     padding: 0;
     margin: 0;
     width: 100%;
-    position: absolute;
-    bottom: 0px;
+
 }
