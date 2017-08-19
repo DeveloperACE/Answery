@@ -18,12 +18,12 @@
     {else}
     <h2>{$questionText}</h2>
         {if $questionTypeID eq 0}
-        <textarea></textarea>
+        <textarea form="continue" required></textarea>
         {elseif $questionTypeID eq 1}
         <form class="multiplechoice">
             {foreach from=$choices key=$key item=$value}
 
-                <label class="multiplechoice"><input type="radio" name="multiplechoice"><img class="multiplechoiceimage" src="{$choices[$key]}"></label><br>
+                <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required><img class="multiplechoiceimage" src="{$choices[$key]}"></label><br>
             {/foreach}
         </form>
 
