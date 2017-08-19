@@ -8,6 +8,7 @@
     <h1>Answery</h1>
     <p id="subtitle">-a simple webapp for people who like answering random questions-</p>
      <a id="viewsource" href="http://github.com/DeveloperACE/Answery">View the Source Code!</a>
+     <a id="submit" href="https://github.com/DeveloperACE/Answery/issues/new">Submit a Question!</a>
     <hr>
 {nocache}
     {if isset($catpath)}

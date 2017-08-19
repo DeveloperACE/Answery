@@ -27,6 +27,8 @@ h2{ font-size: 1.25em;}
     text-align: center;
 }
 #viewsource {display: inline; font-size: small; float: right;}
+#submit {display: inline; font-size: small; float: left;}
+
 
 
 
