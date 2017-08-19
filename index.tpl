@@ -22,7 +22,7 @@
         <form class="multiplechoice" style="width: 75%;">
             {foreach from=$choices key=$key item=$value}
 
-                <input class="cultiplechoice" type="radio" name="multiplechoice"><img class="MCImage" src="{$choices[$key]}"> </input><br>
+                <label class="multiplechoice"><input type="radio" name="multiplechoice"><img class="MCImage" src="{$choices[$key]}"></label><br>
             {/foreach}
         </form>
 
