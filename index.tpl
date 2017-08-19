@@ -18,11 +18,19 @@
     <h2>{$questionText}</h2>
         {if $questionTypeID eq 0}
         <textarea></textarea>
+        {elseif $questionTypeID eq 1}
+        <form class="multiplechoice" style="width: 75%;">
+            {foreach from=$choices key=$key item=$value}
+
+                <input class="cultiplechoice" type="radio" name="multiplechoice"><img class="MCImage" src="{$choices[$key]}"> </input><br>
+            {/foreach}
+        </form>
+
         {/if}
     {/if}
 
     <form action="#" method="get">
-        {if !$cat}
+        {if !$isCatSet}
             <input type="hidden" name="cat" value="true"></input>
         {/if}
         <input type="submit" value="Continue >"></input>

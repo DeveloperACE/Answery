@@ -33,7 +33,26 @@ img#cat {
     margin: 0 auto;
     display: block;
 }
+form.multiplechoice {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: space-around;
 
+}
+input.multiplechoice {
+    flex-grow: 1;
+    flex-basis: content;
+    max-width: 20%;
+    max-height: 20%;
+}
+img.MCImage {
+
+    max-width: 20%;
+    max-height: 20%;
+}
 textarea {
     background-image: url("http://2.bp.blogspot.com/-QkCoXoBvbxA/VLAQzOgQVLI/AAAAAAAAC_8/YIXjaEbbALk/s1600/8621_chalkboard.jpg");
     font-family: "Bradley Hand ITC TT";
