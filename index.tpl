@@ -25,10 +25,10 @@
 
         {elseif $questionTypeID eq 1}
 
-        <form class="multiplechoice">
+            <form class="multiplechoiceIMG">
             {foreach from=$choices key=$key item=$value}
 
-                <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required><img class="multiplechoiceimage" src="{$choices[$key]}"></label><br>
+                <label class="multiplechoiceIMG"><input type="radio" form="continue" name="multiplechoice" required><img class="multiplechoiceimage" src="{$value}"></label><br>
             {/foreach}
         </form>
 
