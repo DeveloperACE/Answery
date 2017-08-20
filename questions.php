@@ -13,9 +13,10 @@ $questions = array(
     array(
         // array(
         //     "question" => "How cute is this cat?", //REQUIRED
-        //     "type" => "randomFromAPI",             //REQUIRED. can be "randomfromAPI" or "text"
+        //     "type" => "randomFromAPI",             //REQUIRED. can be "randomfromAPI", "random" or "text"
         //     "API" => "http://random.cat/meow",     //required if type is "randomfromAPI"
-        //     "option" => "Option 1"                 //required for each option if type is "text"
+        //     "Option 1"                 //required for each option if type is "text"
+        //     "options" => Array()       //required if type = random
         // ),
         array(
             "question" => "Which of these cats is cuter?",
@@ -26,6 +27,11 @@ $questions = array(
             "question" => "Which of these dogs is cuter?",
             "type" => "randomFromAPI",
             "API" => "https://random.dog/woof.json"
+        ),
+        array(
+            "question" => "Which emoji do you like better?",
+            "type" => "random",
+            "options" => array("👌","😂","🙄","❤️","☺️","😘","😉","😜","😔","😳","😑","😊","🎉","😇","✨","🤷","🏻","🙃","😅","💃","🏻","🏼","⭐️","💥")
         )
     ),
     //rating scale (2)

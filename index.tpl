@@ -31,7 +31,7 @@
                 <label class="multiplechoiceIMG"><input type="radio" form="continue" name="multiplechoice" required><img class="multiplechoiceimage" src="{$value}"></label><br>
             {/foreach}
             </form>
-            {elseif $multiplechoicetype eq "text"}
+            {elseif $multiplechoicetype eq "text" or "random"}
             <form class="multiplechoice">
                 {foreach from=$choices key=$key item=$value}
                     <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required>{$value}</label><br>

@@ -49,6 +49,13 @@ if(isset($_GET["cat"])) {
                 }
                 break;
 
+            case "random":
+                for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
+                    $options = $questionObject["options"];
+                    $choices[] = $options[mt_rand(0, count($options)-1)];
+                }
+                break;
+
             default:
                 # code...
                 break;
