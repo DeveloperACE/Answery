@@ -28,9 +28,18 @@ h2{ font-size: 1.25em;}
     font-family: "Papyrus";
     text-align: center;
 }
-#viewsource {display: inline; font-size: small; float: right;}
-#submit {display: inline; font-size: small; float: left;}
+ul.menu {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+li.link {
+    display: inline;
+    font-size: smaller;
+}
 
+hr {margin-bottom: 40px;}
 
 
 
