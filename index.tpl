@@ -9,7 +9,7 @@
     <p id="subtitle">-a simple webapp for people who like answering random questions-</p>
     <ul class="menu">
      <li class="link"><a class="menu" href="http://github.com/DeveloperACE/Answery">Source Code</a></li> -
-     <li class="link"><a class="menu" href="https://github.com/DeveloperACE/Answery/issues/new">Submit a Question</a></li>
+     <li class="link"><a class="menu" href="https://github.com/DeveloperACE/Answery/issues/new">Submit Questions/Feedback</a></li>
  </ul>
     <hr>
 {nocache}
