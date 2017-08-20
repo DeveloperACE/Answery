@@ -36,7 +36,7 @@
         <form class="rating">
             <span class="starRating">
                 {for $point=1 to 10}
-                <input id="rating{$point}" type="radio" name="rating" value="{$point}">
+                <input form="continue" id="rating{$point}" type="radio" name="rating" value="{$point}" required>
                 <label for="rating{$point}">{$point}</label>
                 {/for}
             </span>
