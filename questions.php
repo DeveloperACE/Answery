@@ -1,7 +1,7 @@
 <?php
 
 $questions = array(
-    //Short answer
+    //Short answer (0)
     array(
         array("question" => "Describe the breed of dog you like best and why you like them."),
         array("question" => "Describe the weirdest/most adorable story you have of you when you were a kid"),
@@ -9,18 +9,26 @@ $questions = array(
         array("question" => "Describe your ideal relationship"),
         array("question" => "What personality trait do you see the most in yourself and why?")
     ),
-    //Multiple choice
+    //Multiple choice (1)
     array(
+        // array(
+        //     "question" => "How cute is this cat?", //REQUIRED
+        //     "type" => "randomFromAPI",             //REQUIRED. can be "randomfromAPI" or "text"
+        //     "API" => "http://random.cat/meow",     //required if type is "randomfromAPI"
+        //     "option" => "Option 1"                 //required for each option if type is "text"
+        // ),
         array(
             "question" => "Which of these cats is cuter?",
-            "randomFromAPI" => "http://random.cat/meow"
+            "type" => "randomFromAPI",
+            "API" => "http://random.cat/meow"
         ),
         array(
             "question" => "Which of these dogs is cuter?",
-            "randomFromAPI" => "https://random.dog/woof.json"
+            "type" => "randomFromAPI",
+            "API" => "https://random.dog/woof.json"
         )
     ),
-    //rating scale
+    //rating scale (2)
     array(
         array(
             "question" => "How cute is this cat?",

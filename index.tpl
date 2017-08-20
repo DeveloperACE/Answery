@@ -25,11 +25,18 @@
 
         {elseif $questionTypeID eq 1}
 
+            {if $multiplechoicetype eq "randomFromAPI"}
             <form class="multiplechoiceIMG">
             {foreach from=$choices key=$key item=$value}
-
                 <label class="multiplechoiceIMG"><input type="radio" form="continue" name="multiplechoice" required><img class="multiplechoiceimage" src="{$value}"></label><br>
             {/foreach}
+            </form>
+            {elseif $multiplechoicetype eq "text"}
+            <form class="multiplechoice">
+                {foreach from=$choices key=$key item=$value}
+                    <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required>{$value}</label><br>
+                {/foreach}
+            {/if}
         </form>
 
         {elseif $questionTypeID eq 2}

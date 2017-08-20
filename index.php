@@ -32,13 +32,29 @@ if(isset($_GET["cat"])) {
     if($questionTypeID == 1) {
         $choices = array();
 
-        for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
-            $choices[$questionNumber] = getFirstValueFromAPI($questionObject["randomFromAPI"]);
+        $type = $questionObject["type"];
+        $smarty->assign("multiplechoicetype", $type);
+        switch ($type) {
+            case "randomFromAPI":
+                    for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
+                        $choices[] = getFirstValueFromAPI($questionObject["API"]);
+                    }
+                break;
+
+            case "text":
+                foreach ($questionObject as $key => $value) {
+                    if (gettype($key) == "integer") {
+                        $choices[] = $value; //add value to choices
+                    }
+                }
+                break;
+
+            default:
+                # code...
+                break;
         }
-
-
-
         $smarty->assign("choices", $choices);
+
 
     } elseif($questionTypeID == 2) {
 
