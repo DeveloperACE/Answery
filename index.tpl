@@ -18,8 +18,11 @@
     {else}
     <h2>{$questionText}</h2>
         {if $questionTypeID eq 0}
+
         <textarea form="continue" required></textarea>
+
         {elseif $questionTypeID eq 1}
+
         <form class="multiplechoice">
             {foreach from=$choices key=$key item=$value}
 
@@ -27,6 +30,16 @@
             {/foreach}
         </form>
 
+        {elseif $questionTypeID eq 2}
+        <img class="rating" src="{$photoPath}" />
+        <form class="rating">
+            <span class="starRating">
+                {for $point=1 to 10}
+                <input id="rating{$point}" type="radio" name="rating" value="{$point}">
+                <label for="rating{$point}">{$point}</label>
+                {/for}
+            </span>
+        </form>
         {/if}
     {/if}
 <footer>

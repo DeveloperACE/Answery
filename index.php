@@ -41,6 +41,9 @@ if(isset($_GET["cat"])) {
 
         $smarty->assign("choices", $choices);
 
+    } elseif($questionTypeID == 2) {
+
+        $smarty->assign("photoPath", getFirstValueFromAPI($questionObject["randomFromAPI"]));
     }
 
 

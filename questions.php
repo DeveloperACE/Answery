@@ -19,6 +19,17 @@ $questions = array(
             "question" => "Which of these dogs is cuter?",
             "randomFromAPI" => "https://random.dog/woof.json"
         )
+    ),
+    //rating scale
+    array(
+        array(
+            "question" => "How cute is this cat?",
+            "randomFromAPI" => "http://random.cat/meow"
+        ),
+        array(
+            "question" => "How cute is this dog?",
+            "randomFromAPI" => "https://random.dog/woof.json"
+        )
     )
     //other type???
 );

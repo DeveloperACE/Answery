@@ -71,7 +71,7 @@ img.multiplechoiceimage {
 
 /* replace multiple choice radio buttons with images */
 
-label > input{ /* HIDE RADIO */
+label > input, .starRating:not(old) > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
   position: absolute; /* Remove input from document flow */
 }
@@ -83,7 +83,49 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   border:5px solid #f00;
 }
 
+form.rating {
+    width: 360px;
+}
+img.rating {
+    max-width:50%;
+    max-height:33%;
+    margin: 0 auto;
+    display: block;
+}
+.starRating:not(old){
+  display        : inline-block;
+  width          : 15em;
+  height         : 1.5em;
+  overflow       : hidden;
+  vertical-align : bottom;
+}
 
+.starRating:not(old) > label{
+  display         : block;
+  float           : right;
+  position        : relative;
+  width           : 10%;
+  height          : 100%;
+  background-color: red;
+  background-size : contain;
+}
+
+.starRating:not(old) > label:before{
+  content         : '';
+  display         : block;
+  width           : 1.5em;
+  height          : 1.5em;
+  background-color: green;
+  background-size : contain;
+  opacity         : 0;
+  transition      : opacity 0.2s linear;
+}
+
+.starRating:not(old) > label:hover:before,
+.starRating:not(old) > label:hover ~ label:before,
+.starRating:not(:hover) > :checked ~ label:before{
+  opacity : 1;
+}
 
 
 textarea {
