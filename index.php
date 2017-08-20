@@ -32,11 +32,10 @@ if(isset($_GET["cat"])) {
     if($questionTypeID == 1) {
         $choices = array();
 
-//using a loop would mean more lines
-        $choices[0] = getFirstValueFromAPI($questionObject["randomFromAPI"]);
-        $choices[1] = getFirstValueFromAPI($questionObject["randomFromAPI"]);
-        $choices[2] = getFirstValueFromAPI($questionObject["randomFromAPI"]);
-        $choices[3] = getFirstValueFromAPI($questionObject["randomFromAPI"]);
+        for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
+            $choices[$questionNumber] = getFirstValueFromAPI($questionObject["randomFromAPI"]);
+        }
+
 
 
         $smarty->assign("choices", $choices);
@@ -53,7 +52,11 @@ if(isset($_GET["cat"])) {
 function getFirstValueFromAPI($URL) {
     $APIObject = json_decode(file_get_contents($URL), true);
     foreach($APIObject as $key => $value) {
-        //do something with your $key and $value;
+
+        if (!in_array(pathinfo($value, PATHINFO_EXTENSION), Array('jpg','png', "jpeg"))) {
+            return getFirstValueFromAPI($URL);
+        }
+
         return $value;
     }
 
