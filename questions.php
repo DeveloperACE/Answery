@@ -7,7 +7,9 @@ $questions = array(
         array("question" => "Describe the weirdest/most adorable story you have of you when you were a kid"),
         array("question" => "What is your favorite emoji and why?"),
         array("question" => "Describe your ideal relationship"),
-        array("question" => "What personality trait do you see the most in yourself and why?")
+        array("question" => "What personality trait do you see the most in yourself and why?"),
+        array("question" => "What presidential administration were you born under?"),//possibly make into a dropdown?
+        array("question" => "What was your favorite event that occured during the year you were born?")
     ),
     //Multiple choice (1)
     array(
