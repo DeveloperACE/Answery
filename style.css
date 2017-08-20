@@ -39,6 +39,10 @@ h2{ font-size: 1.25em;}
 form {
     margin: 0 auto;
 }
+small{
+    text-align: center;
+    display: block;
+}
 img#rewardcat {
     max-width:80%;
     max-height:65%;

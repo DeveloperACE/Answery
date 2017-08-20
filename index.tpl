@@ -31,6 +31,7 @@
         </form>
 
         {elseif $questionTypeID eq 2}
+        <small>Click the red circles to rate</small>
         <img class="rating" src="{$photoPath}" />
         <form class="rating">
             <span class="starRating">
