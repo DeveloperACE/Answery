@@ -41,7 +41,9 @@
 
         {elseif $questionTypeID eq 2}
         <small>Click the red circles to rate</small>
+        {if isset($photoPath)}
         <img class="rating" src="{$photoPath}" />
+        {/if}
         <form class="rating">
             <span class="starRating">
                 {for $point=1 to 10}

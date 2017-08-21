@@ -65,7 +65,11 @@ if(isset($_GET["cat"])) {
 
     } elseif($questionTypeID == 2) {
 
-        $smarty->assign("photoPath", getFirstValueFromAPI($questionObject["randomFromAPI"]));
+        if (isset($questionObject["randomFromAPI"])){
+            $smarty->assign("photoPath", getFirstValueFromAPI($questionObject["randomFromAPI"]));
+        } else {
+            
+        }
     }
 
 
