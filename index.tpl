@@ -55,9 +55,11 @@
         {/if}
     {/if}
 <footer>
-    <form id="continue" action="#" method="get">
-        {if !$isCatSet}
-            <input type="hidden" name="cat" value="true"></input>
+    <form id="continue" action="#" method="post">
+        {if $cat eq 0}
+        <input type="hidden" name="cat" value="1"></input>
+        {elseif cat eq 1}
+        <input type="hidden" name="cat" value="0"></input>
         {/if}
         <input type="submit" value="Continue >"></input>
     </form>

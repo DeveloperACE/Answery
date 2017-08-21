@@ -10,9 +10,9 @@ $smarty->debugging = false;
 $smarty->caching = true;
 $smarty->cache_lifetime = 120;
 
-$smarty->assign("isCatSet", isset($_GET["cat"]));
+$smarty->assign("cat", isset($_POST["cat"]));
 
-if(isset($_GET["cat"])) {
+if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
         $smarty->assign("catpath", getFirstValueFromAPI('http://random.cat/meow'));
 
 } else {
