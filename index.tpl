@@ -61,6 +61,9 @@
         {/if}
         <input type="submit" value="Continue >"></input>
     </form>
+    <form id="skip" action="/">
+        <input type="submit" value="Skip >"></input>
+    </form>
 </footer>
 {/nocache}
 

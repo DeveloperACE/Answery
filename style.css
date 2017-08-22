@@ -189,6 +189,9 @@ input[type="submit"] {
      cursor: pointer;
      text-decoration: none;
 }
+form#skip input[type="submit"] {
+    color: blue;
+}
 a {
     color: white;
 }
