@@ -61,9 +61,11 @@
         {/if}
         <input type="submit" value="Continue >"></input>
     </form>
+    {if $cat eq 0}
     <form id="skip" action="/">
         <input type="submit" value="Skip >"></input>
     </form>
+    {/if}
 </footer>
 {/nocache}
 
