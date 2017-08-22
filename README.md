@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="answery-logo.png">
+</p>
+
 # [Answery](https://answery.herokuapp.com)
 A simple site for people who like answering questions
 
