@@ -19,7 +19,19 @@ $questions = array(
             "type" => "shortanswer"
         ),
         array(
+            "question" => "What do you think the purpose of a relationship is?",
+            "type" => "shortanswer"
+        ),
+        array(
+            "question" => "Describe your childhood best friend",
+            "type" => "shortanswer"
+        ),
+        array(
             "question" => "What is your favorite emoji and why?",
+            "type" => "shortanswer"
+        ),
+        array(
+            "question" => "What is your favorite weather and why?",
             "type" => "shortanswer"
         ),
         array(
@@ -59,6 +71,14 @@ $questions = array(
             "type" => "shortanswer"
         ),
         array(
+            "question" => "What is your favorite ice cream flavor and why?",
+             "type" => "shortanswer"
+        ),
+        array(
+            "question" => "What is your favorite type of sweater and why?",
+            "type" => "shortanswer"
+        ),
+        array(
             "question" => "What is your favorite movie and why?",
             "type" => "shortanswer"
         ),
@@ -72,6 +92,14 @@ $questions = array(
         ),
         array(
             "question" => "What is your favorite disney movie and why?",
+            "type" => "shortanswer"
+        ),
+        array(
+            "question" => "What excites you the most?",
+            "type" => "shortanswer"
+        ),
+        array(
+            "question" => "If you could go anywhere, would it be to a place or a person? Where/who and why?",
             "type" => "shortanswer"
         ),
         array(
@@ -92,6 +120,10 @@ $questions = array(
         ),
         array(
             "question" => "How much wood could a woodchuck chuck if a woodhuck could chuck norris?",
+            "type" => "shortanswer"
+        ),
+        array(
+            "question" => "If you could have dinner with anyone living or dead, who would it be and why?",
             "type" => "shortanswer"
         ),
         array(
@@ -169,6 +201,24 @@ $questions = array(
             "True",
             "False",
             "Cheese"
+        ),
+        array(
+            "question" => "Leaves are swell right?",
+            "type" => "multiplechoice",
+            "source" => "text",
+            "Right!",
+            "Right?",
+            "Huh?",
+            "I Guess???????"
+        ),
+        array(
+            "question" => "Which is better? Bunnies or Hedgehogs?",
+            "type" => "multiplechoice",
+            "source" => "text",
+            "Bunnies",
+            "Hedgehogs",
+            "All of the above",
+            "None of the above"
         ),
         array(
             "question" => "How cute is this cat?",
