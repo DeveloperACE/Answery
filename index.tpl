@@ -19,30 +19,28 @@
 
     {else}
     <h2>{$questionText}</h2>
-        {if $questionTypeID eq 0}
 
-        <textarea form="continue" required></textarea>
+        {if $questiontype eq "shortanswer"}
+            <textarea form="continue" required></textarea>
 
-        {elseif $questionTypeID eq 1}
-
-            {if $multiplechoicetype eq "randomFromAPI"}
+        {elseif $questiontype eq "multiplechoice" and $datasource eq "randomFromAPI"}
             <form class="multiplechoiceIMG">
             {foreach from=$choices key=$key item=$value}
                 <label class="multiplechoiceIMG"><input type="radio" form="continue" name="multiplechoice" required><img class="multiplechoiceimage" src="{$value}"></label><br>
             {/foreach}
             </form>
-            {elseif $multiplechoicetype eq "text" or "random"}
+
+        {elseif $questiontype eq "multiplechoice" and $datasource eq "random" or $datasource eq "text"}
             <form class="multiplechoice">
                 {foreach from=$choices key=$key item=$value}
                     <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required>{$value}</label><br>
                 {/foreach}
-            {/if}
-        </form>
+            </form>
 
-        {elseif $questionTypeID eq 2}
+        {elseif $questiontype eq "rating"}
         <small>Click the red circles to rate</small>
-        {if isset($photoPath)}
-        <img class="rating" src="{$photoPath}" />
+        {if $datasource eq "randomFromAPI"}
+        <img class="rating" src="{$ratingPhoto}" />
         {/if}
         <form class="rating">
             <span class="starRating">

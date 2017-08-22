@@ -17,63 +17,57 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
 
 } else {
 
-    //manual override because only short answer has been implemented
-    $questionTypeID = mt_rand(0, count($questions)-1);
     //gets a random question from the sub array of question types
-    $questionID = mt_rand(0, count($questions[$questionTypeID])-1);
+    $questionID = mt_rand(0, count($questions)-1);
 
-    $questionObject = $questions[$questionTypeID][$questionID];
+    $questionObject = $questions[$questionID];
 
-    $smarty->assign("questionTypeID", $questionTypeID);
-    //$smarty->assign("questionID", $questionID);
-    $smarty->assign("questionText", $questions[$questionTypeID][$questionID]["question"]);
+    $smarty->assign("questionText", $questions[$questionID]["question"]);
     //$smarty->assign("questionObject", $questionObject);
 
-    if($questionTypeID == 1) {
-        $choices = array();
+
 
         $type = $questionObject["type"];
-        $smarty->assign("multiplechoicetype", $type);
-        switch ($type) {
-            case "randomFromAPI":
-                    for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
-                        $choices[] = getFirstValueFromAPI($questionObject["API"]);
-                    }
-                break;
+        $smarty->assign("questiontype", $type);
 
-            case "text":
-                foreach ($questionObject as $key => $value) {
-                    if (gettype($key) == "integer") {
-                        $choices[] = $value; //add value to choices
-                    }
-                }
-                break;
-
-            case "random":
-                for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
-                    $options = $questionObject["options"];
-                    $choices[] = $options[mt_rand(0, count($options)-1)];
-                }
-                break;
-
-            default:
-                # code...
-                break;
+        if (in_array($type, array("multiplechoice", "rating"))) {
+            $source = $questionObject["source"];
+            $smarty->assign("datasource", $source);
         }
+        $choices = array();
+
+        if ($type == "shortanswer") {
+            //do nothing
+        } elseif ($type == "multiplechoice" && $source == "randomFromAPI") {
+            for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
+                $choices[] = getFirstValueFromAPI($questionObject["API"]);
+            }
+
+        } elseif ($type == "multiplechoice" && $source == "random") {
+            for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
+                $options = $questionObject["options"];
+                $choices[] = $options[mt_rand(0, count($options)-1)];
+            }
+
+        } elseif ($type == "multiplechoice" && $source == "text") {
+            foreach ($questionObject as $key => $value) {
+                if (gettype($key) == "integer") {
+                    $choices[] = $value; //add value to choices
+                }
+            }
+
+        } elseif ($type == "rating" && $source == "randomFromAPI") {
+            $smarty->assign("ratingPhoto", getFirstValueFromAPI($questionObject["API"]));
+
+        } elseif ($type == "rating" && $source == "none") {
+            //do nothing
+        }
+
+
         $smarty->assign("choices", $choices);
 
 
-    } elseif($questionTypeID == 2) {
-
-        if (isset($questionObject["randomFromAPI"])){
-            $smarty->assign("photoPath", getFirstValueFromAPI($questionObject["randomFromAPI"]));
-        } else {
-            
-        }
     }
-
-
- }
 
 
 function getFirstValueFromAPI($URL) {
