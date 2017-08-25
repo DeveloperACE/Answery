@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/smarty/smarty/libs/Smarty.class.php';
+require ("vendor/smarty/smarty/libs/Smarty.class.php");
 require("questions.php");
 
 $smarty = new Smarty;
