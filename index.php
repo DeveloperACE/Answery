@@ -23,6 +23,7 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
     $questionObject = $questions[$questionID];
 
     $smarty->assign("questionText", $questions[$questionID]["question"]);
+    $smarty->assign("socialMediaText", urlencode($questions[$questionID]["question"]));
     //$smarty->assign("questionObject", $questionObject);
 
 

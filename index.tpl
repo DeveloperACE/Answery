@@ -2,6 +2,12 @@
 <head>
     <title>Answery- a simple webapp for people who like answering questions</title>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="UTF-8">
+    <meta property="og:site_name" content="Answery" />
+    <meta property="og:image" content="https://answery.herokuapp.com/answery-logo.jpg" />
+    <meta name="description" content="A simple webapp for people who like answering random questions">
+    <meta name="keywords" content="Answery, cats, cute, boredom, questions">
+    <meta name="author" content="Adrian Edwards">
 
 </head>
 <body>
@@ -11,6 +17,24 @@
      <li class="link"><a class="menu" href="http://github.com/DeveloperACE/Answery">Source Code</a></li> -
      <li class="link"><a class="menu" href="https://github.com/DeveloperACE/Answery/issues/new">Submit Questions/Feedback</a></li>
  </ul>
+     <br>
+     <div class="socialMediaButtons">
+     {nocache}
+     {if isset($catpath)}
+
+         <a class="twitter-share-button"
+      href="https://twitter.com/intent/tweet?text=Answer%20questions%3A%20get%20cats!">
+     Tweet</a>
+    {else}
+    <a class="twitter-share-button"
+ href="https://twitter.com/intent/tweet?text={$socialMediaText}">
+Tweet</a>
+    {/if}
+    {/nocache}
+
+     <g:plusone></g:plusone>
+ </div>
+
     <hr>
 {nocache}
     {if isset($catpath)}
@@ -80,6 +104,27 @@
   ga('send', 'pageview');
 
 </script>
+
+
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
 {/literal}
 </body>
 </html>
