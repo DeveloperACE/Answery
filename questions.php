@@ -133,6 +133,12 @@ $questions = array(
             "API" => "http://random.cat/meow"
         ),
         array(
+            "question" => "Which of these words do you like more?",
+            "type" => "multiplechoice",
+            "source" => "randomFromLink",
+            "link" => "http://setgetgo.com/randomword/get.php"
+        ),
+        array(
             "question" => "Which of these dogs is cuter?",
             "type" => "multiplechoice",
             "source" => "randomFromAPI",

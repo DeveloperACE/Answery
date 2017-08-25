@@ -44,6 +44,10 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
                 $choices[] = getFirstValueFromAPI($questionObject["API"]);
             }
 
+        } elseif ($type == "multiplechoice" && $source == "randomFromLink") {
+            for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
+                $choices[] = file_get_contents($questionObject["link"]);
+            }
         } elseif ($type == "multiplechoice" && $source == "random") {
             for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
                 $options = $questionObject["options"];

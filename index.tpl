@@ -54,7 +54,7 @@ Tweet</a>
             {/foreach}
             </form>
 
-        {elseif $questiontype eq "multiplechoice" and $datasource eq "random" or $datasource eq "text"}
+        {elseif $questiontype eq "multiplechoice"}
             <form class="multiplechoice">
                 {foreach from=$choices key=$key item=$value}
                     <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required>{$value}</label><br>
