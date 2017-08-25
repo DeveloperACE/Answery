@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/smarty/smarty/libs/Smarty.class.php';
+require ("vendor/smarty/smarty/libs/Smarty.class.php");
 require("questions.php");
 
 $smarty = new Smarty;
@@ -31,48 +31,50 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
         $type = $questionObject["type"];
         $smarty->assign("questiontype", $type);
 
+        $source = "";
         if (in_array($type, array("multiplechoice", "rating"))) {
             $source = $questionObject["source"];
             $smarty->assign("datasource", $source);
         }
         $choices = array();
 
-        if ($type == "shortanswer") {
-            //do nothing
-        } elseif ($type == "multiplechoice" && $source == "randomFromAPI") {
-            for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
-                $choices[] = getFirstImagePathFromAPI($questionObject["API"]);
-            }
+        if (strcmp($source, "") !== 0)
+        {
+			if ($type == "shortanswer") {
+				//do nothing
+			} elseif ($type == "multiplechoice" && $source == "randomFromAPI") {
+				for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
+					$choices[] = getFirstImagePathFromAPI($questionObject["API"]);
+				}
 
-        } elseif ($type == "multiplechoice" && $source == "randomFromLink") {
-            for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
-                $choices[] = file_get_contents($questionObject["link"]);
-            }
-        } elseif ($type == "multiplechoice" && $source == "random") {
-            for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
-                $options = $questionObject["options"];
-                $choices[] = $options[mt_rand(0, count($options)-1)];
-            }
+			} elseif ($type == "multiplechoice" && $source == "randomFromLink") {
+				for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
+					$choices[] = file_get_contents($questionObject["link"]);
+				}
+			} elseif ($type == "multiplechoice" && $source == "random") {
+				for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
+					$options = $questionObject["options"];
+					$choices[] = $options[mt_rand(0, count($options)-1)];
+				}
 
-        } elseif ($type == "multiplechoice" && $source == "text") {
-            foreach ($questionObject as $key => $value) {
-                if (gettype($key) == "integer") {
-                    $choices[] = $value; //add value to choices
-                }
-            }
+			} elseif ($type == "multiplechoice" && $source == "text") {
+				foreach ($questionObject as $key => $value) {
+					if (gettype($key) == "integer") {
+						$choices[] = $value; //add value to choices
+					}
+				}
 
-        } elseif ($type == "rating" && $source == "randomFromAPI") {
-            $smarty->assign("ratingPhoto", getFirstImagePathFromAPI($questionObject["API"]));
+			} elseif ($type == "rating" && $source == "randomFromAPI") {
+				$smarty->assign("ratingPhoto", getFirstImagePathFromAPI($questionObject["API"]));
 
-        } elseif ($type == "rating" && $source == "none") {
-            //do nothing
-        }
+			} elseif ($type == "rating" && $source == "none") {
+				//do nothing
+			}
 
-
-        $smarty->assign("choices", $choices);
-
-
+			$smarty->assign("choices", $choices);
+		}
     }
+
 
 
 function getFirstImagePathFromAPI($URL) {
@@ -80,7 +82,7 @@ function getFirstImagePathFromAPI($URL) {
     foreach($APIObject as $key => $value) {
 
         if (!in_array(pathinfo($value, PATHINFO_EXTENSION), Array('jpg','png', "jpeg"))) {
-            return getFirstValueFromAPI($URL);
+            return getFirstImagePathFromAPI($URL);
         }
 
         return $value;
