@@ -82,7 +82,7 @@ function getFirstImagePathFromAPI($URL) {
     foreach($APIObject as $key => $value) {
 
         if (!in_array(pathinfo($value, PATHINFO_EXTENSION), Array('jpg','png', "jpeg"))) {
-            return getFirstValueFromAPI($URL);
+            return getFirstImagePathFromAPI($URL);
         }
 
         return $value;
