@@ -13,7 +13,7 @@ $smarty->cache_lifetime = 120;
 $smarty->assign("cat", isset($_POST["cat"]));
 
 if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
-        $smarty->assign("catpath", getFirstValueFromAPI('http://random.cat/meow'));
+        $smarty->assign("catpath", getFirstImagePathFromAPI('http://random.cat/meow'));
 
 } else {
 
@@ -41,7 +41,7 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
             //do nothing
         } elseif ($type == "multiplechoice" && $source == "randomFromAPI") {
             for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
-                $choices[] = getFirstValueFromAPI($questionObject["API"]);
+                $choices[] = getFirstImagePathFromAPI($questionObject["API"]);
             }
 
         } elseif ($type == "multiplechoice" && $source == "randomFromLink") {
@@ -62,7 +62,7 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
             }
 
         } elseif ($type == "rating" && $source == "randomFromAPI") {
-            $smarty->assign("ratingPhoto", getFirstValueFromAPI($questionObject["API"]));
+            $smarty->assign("ratingPhoto", getFirstImagePathFromAPI($questionObject["API"]));
 
         } elseif ($type == "rating" && $source == "none") {
             //do nothing
@@ -75,7 +75,7 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
     }
 
 
-function getFirstValueFromAPI($URL) {
+function getFirstImagePathFromAPI($URL) {
     $APIObject = json_decode(file_get_contents($URL), true);
     foreach($APIObject as $key => $value) {
 
