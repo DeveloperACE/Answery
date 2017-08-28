@@ -47,23 +47,25 @@ Tweet</a>
         {if $questiontype eq "shortanswer"}
             <textarea form="continue" required></textarea>
 
-        {elseif $questiontype eq "multiplechoice" and $datasource eq "randomFromAPI"}
-            <form class="multiplechoiceIMG">
-            {foreach from=$choices key=$key item=$value}
-                <label class="multiplechoiceIMG"><input type="radio" form="continue" name="multiplechoice" required><img class="multiplechoiceimage" src="{$value}"></label><br>
-            {/foreach}
-            </form>
-
         {elseif $questiontype eq "multiplechoice"}
-            <form class="multiplechoice">
+
+            {if $choices[0]->getType() eq "image"}
+                <form class="multiplechoiceIMG">
                 {foreach from=$choices key=$key item=$value}
-                    <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required>{$value}</label><br>
+                    <label class="multiplechoiceIMG"><input type="radio" form="continue" name="multiplechoice" required><img class="multiplechoiceimage" src="{$value->getContent()}"></label><br>
                 {/foreach}
-            </form>
+                </form>
+            {elseif $choices[0]->getType() eq "text"}
+                <form class="multiplechoice">
+                    {foreach from=$choices key=$key item=$value}
+                        <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required>{$value->getContent()}</label><br>
+                    {/foreach}
+                </form>
+            {/if}
 
         {elseif $questiontype eq "rating"}
         <small>Click the red circles to rate</small>
-        {if $datasource eq "randomFromAPI"}
+        {if $questionObject->hasSupplementaryImage()}
         <img class="rating" src="{$ratingPhoto}" />
         {/if}
         <form class="rating">

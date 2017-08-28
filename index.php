@@ -13,7 +13,7 @@ $smarty->cache_lifetime = 120;
 $smarty->assign("cat", isset($_POST["cat"]));
 
 if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
-        $smarty->assign("catpath", getFirstImagePathFromAPI('http://random.cat/meow'));
+        $smarty->assign("catpath", Question::getFirstImagePathFromAPI('http://random.cat/meow'));
 
 } else {
 
@@ -22,81 +22,39 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
 
     $questionObject = $questions[$questionID];
 
-    $smarty->assign("questionText", $questions[$questionID]["question"]);
-    $smarty->assign("socialMediaText", urlencode($questions[$questionID]["question"]));
+    $smarty->assign("questionText", $questionObject->getQuestion());
+    $smarty->assign("socialMediaText", urlencode($questionObject->getQuestion()));
     //$smarty->assign("questionObject", $questionObject);
 
 
+    $type = $questionObject->getAnswerType();
+    $smarty->assign("questionID", $questionID);
+    $smarty->assign("questionObject", $questionObject);
+    $smarty->assign("questiontype", $type);
 
-        $type = $questionObject["type"];
-        $smarty->assign("questiontype", $type);
+    switch ($type) {
+        case AnswerType::ShortAnswer :
+            //do nothing
+            break;
 
-        $source = "";
-        if (in_array($type, array("multiplechoice", "rating"))) {
-            $source = $questionObject["source"];
-            $smarty->assign("datasource", $source);
-        }
-        $choices = array();
+        case AnswerType::MultipleChoice:
+            //if API, get dog/cat
+            if ($questionObject->getFirstChoice()->getType() == OptionType::Image) {
+                $smarty->assign("choices", Question::getImagePathsOptionsFromAPIOptions($questionObject->getDesiredNumberOfChoices()));
+            } else {
+                $smarty->assign("choices", $questionObject->getDesiredNumberOfChoices());
+            }
+            break;
 
-        if (strcmp($source, "") !== 0)
-        {
-			if ($type == "shortanswer") {
-				//do nothing
-			} elseif ($type == "multiplechoice" && $source == "randomFromAPI") {
-				for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
-					$choices[] = getFirstImagePathFromAPI($questionObject["API"]);
-				}
-
-			} elseif ($type == "multiplechoice" && $source == "randomFromLink") {
-				for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
-					$choices[] = file_get_contents($questionObject["link"]);
-				}
-			} elseif ($type == "multiplechoice" && $source == "random") {
-				for ($questionNumber=0; $questionNumber <= 3; $questionNumber++) {
-					$options = $questionObject["options"];
-					$choices[] = $options[mt_rand(0, count($options)-1)];
-				}
-
-			} elseif ($type == "multiplechoice" && $source == "text") {
-				foreach ($questionObject as $key => $value) {
-					if (gettype($key) == "integer") {
-						$choices[] = $value; //add value to choices
-					}
-				}
-
-			} elseif ($type == "rating" && $source == "randomFromAPI") {
-				$smarty->assign("ratingPhoto", getFirstImagePathFromAPI($questionObject["API"]));
-
-			} elseif ($type == "rating" && $source == "none") {
-				//do nothing
-			}
-
-			$smarty->assign("choices", $choices);
-		}
+        case AnswerType::Rating:
+            //if supp. img, get dog/cat
+            if ($questionObject->hasSupplementaryImage()) {
+                $smarty->assign("ratingPhoto", $questionObject->getSupplementaryImagePath());
+            }
+            break;
     }
 
-
-
-function getFirstImagePathFromAPI($URL) {
-    $APIObject = json_decode(file_get_contents($URL), true);
-    foreach($APIObject as $key => $value) {
-
-        if (!in_array(pathinfo($value, PATHINFO_EXTENSION), Array('jpg','png', "jpeg"))) {
-            return getFirstImagePathFromAPI($URL);
-        }
-
-        return $value;
-    }
 
 }
- /*<form action="#" method="get">
-     <?php if(!isset($_GET["cat"])) {
-         echo '<input type="hidden" name="cat" value="true"></input>';
-     }
-     <input type="submit" value="Continue >"></input>
- </form>*/
-
-
 
 $smarty->display('index.tpl');
-?>
