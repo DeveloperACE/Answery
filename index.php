@@ -39,7 +39,7 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
 
         case AnswerType::MultipleChoice:
             //if API, get dog/cat
-            if ($questionObject->getFirstChoice()->getType() == OptionType::Image) {
+            if ($questionObject->getFirstChoice()->getType() == OptionType::API) {
                 $smarty->assign("choices", Question::getImagePathsOptionsFromAPIOptions($questionObject->getDesiredNumberOfChoices()));
             } else {
                 $smarty->assign("choices", $questionObject->getDesiredNumberOfChoices());
