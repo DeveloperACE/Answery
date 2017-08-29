@@ -13,3 +13,4 @@ Answery uses the PHP dependency manager [Composer](https://getcomposer.org). To 
 The following are all the API's used in this web app.
 - http://random.cat
 - http://random.dog (https://github.com/AdenFlorian/random.dog)
+- http://setgetgo.com/randomword
