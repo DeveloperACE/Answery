@@ -44,10 +44,10 @@ Tweet</a>
     {else}
     <h2>{$questionText}</h2>
 
-        {if $questiontype eq "shortanswer"}
+        {if $questionObject->getAnswerType() eq "shortanswer"}
             <textarea form="continue" required></textarea>
 
-        {elseif $questiontype eq "multiplechoice"}
+        {elseif $questionObject->getAnswerType() eq "multiplechoice"}
 
             {if $choices[0]->getType() eq "image"}
                 <form class="multiplechoiceIMG">
@@ -63,7 +63,7 @@ Tweet</a>
                 </form>
             {/if}
 
-        {elseif $questiontype eq "rating"}
+        {elseif $questionObject->getAnswerType() eq "rating"}
         <small>Click the red circles to rate</small>
         {if $questionObject->hasSupplementaryImage()}
         <img class="rating" src="{$ratingPhoto}" />

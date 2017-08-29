@@ -194,7 +194,7 @@ input[type="submit"] {
      text-decoration: none;
 }
 form#skip input[type="submit"] {
-    color: blue;
+    color:  #66a3ff;
     margin-top: 25px;
 }
 a {

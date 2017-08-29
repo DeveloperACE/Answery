@@ -158,7 +158,7 @@ class Question {
 
     }
 
-    public static function getImagePathsOptionsFromAPIOptions($input) {
+    public static function getImagePathOptionsFromAPIOptions($input) {
         $output = array();
             for ($index = 0; $index < count($input); $index++) {
                 if ($input[$index]->getType() == OptionType::API) {

@@ -30,7 +30,7 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
     $type = $questionObject->getAnswerType();
     $smarty->assign("questionID", $questionID);
     $smarty->assign("questionObject", $questionObject);
-    $smarty->assign("questiontype", $type);
+    //$smarty->assign("questiontype", $type);
 
     switch ($type) {
         case AnswerType::ShortAnswer :
@@ -40,7 +40,7 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
         case AnswerType::MultipleChoice:
             //if API, get dog/cat
             if ($questionObject->getFirstChoice()->getType() == OptionType::API) {
-                $smarty->assign("choices", Question::getImagePathsOptionsFromAPIOptions($questionObject->getDesiredNumberOfChoices()));
+                $smarty->assign("choices", Question::getImagePathOptionsFromAPIOptions($questionObject->getDesiredNumberOfChoices()));
             } else {
                 $smarty->assign("choices", $questionObject->getDesiredNumberOfChoices());
             }

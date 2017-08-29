@@ -142,7 +142,7 @@ $questions = array(
         null,
         AnswerType::MultipleChoice,
         array(
-            new Option(OptionType::API, "http://setgetgo.com/randomword/get.php")
+            new Option(OptionType::TextContentsOfLink, "http://setgetgo.com/randomword/get.php")
         ),
         4
     ),
