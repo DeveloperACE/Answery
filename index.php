@@ -41,6 +41,8 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
             //if API, get dog/cat
             if ($questionObject->getFirstChoice()->getType() == OptionType::API) {
                 $smarty->assign("choices", Question::getImagePathOptionsFromAPIOptions($questionObject->getDesiredNumberOfChoices()));
+            } elseif ($questionObject->getFirstChoice()->getType() == OptionType::TextContentsOfLink) {
+                $smarty->assign("choices", Question::getRawAPIContentOptionsFromLinkOptions($questionObject->getDesiredNumberOfChoices()));
             } else {
                 $smarty->assign("choices", $questionObject->getDesiredNumberOfChoices());
             }

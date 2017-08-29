@@ -3,7 +3,7 @@ abstract class OptionType
 {
     const API = "API";
     const Image = "image";
-    const ContentsOfLink = "contents";
+    const TextContentsOfLink = "textcontents";
     const Text = "text";
     // etc.
 }

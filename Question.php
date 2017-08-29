@@ -168,6 +168,16 @@ class Question {
         return $output;
     }
 
+    public static function getRawAPIContentOptionsFromLinkOptions($input) {
+        $output = array();
+        for ($index = 0; $index < count($input); $index++) {
+            if ($input[$index]->getType() == OptionType::TextContentsOfLink) {
+                $output[] = new Option(OptionType::Text, (string)file_get_contents($input[$index]->getContent()));
+            }
+        }
+        return $output;
+    }
+
 
     public function getFirstChoice() {
         return $this->getDesiredNumberOfChoices()[0];
