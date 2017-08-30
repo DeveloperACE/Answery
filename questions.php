@@ -74,26 +74,7 @@ $questions = array(
         "Which dog breed do you like most?",
         null,
         AnswerType::MultipleChoice,
-        array(
-            new Option(OptionType::Text, "Labrador Retrievers"),
-            new Option(OptionType::Text, "German Shepherd"),
-            new Option(OptionType::Text, "Golden Retrievers"),
-            new Option(OptionType::Text, "Beagles"),
-            new Option(OptionType::Text, "Bulldogs"),
-            new Option(OptionType::Text, "Yorkshire Terriers"),
-            new Option(OptionType::Text, "Boxers"),
-            new Option(OptionType::Text, "Poodles"),
-            new Option(OptionType::Text, "Rottweilers"),
-            new Option(OptionType::Text, "Daschund"),
-            new Option(OptionType::Text, "Border Collie"),
-            new Option(OptionType::Text, "Australian Shepherd"),
-            new Option(OptionType::Text, "St. Bernard"),
-            new Option(OptionType::Text, "Scottish Terrier"),
-            new Option(OptionType::Text, "Chihuahua"),
-            new Option(OptionType::Text, "Schitzu"),
-            new Option(OptionType::Text, "Great Dane"),
-            new Option(OptionType::Text, "Burmese Mountain Dog")
-        ),
+        $dogs,
         4
     ),
     new Question(
