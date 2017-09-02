@@ -9,6 +9,12 @@
     <meta name="keywords" content="Answery, cats, cute, boredom, questions">
     <meta name="author" content="Adrian Edwards">
 
+    <link rel="apple-touch-icon" href="answery-logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
 </head>
 <body>
     <h1>Answery</h1>
@@ -17,7 +23,6 @@
      <li class="link"><a class="menu" href="http://github.com/DeveloperACE/Answery">Source Code</a></li> -
      <li class="link"><a class="menu" href="https://github.com/DeveloperACE/Answery/issues/new">Submit Questions/Feedback</a></li>
  </ul>
-     <br>
      <div class="socialMediaButtons">
      {nocache}
      {if isset($catpath)}

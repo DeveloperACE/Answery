@@ -153,30 +153,43 @@ textarea {
     font-family: "Bradley Hand ITC TT";
     font-size: .75em;
     /*border: 10px solid;*/
-    color: e0dbd1;
+    color: #e0dbd1;
     margin: 20px auto;
     height: 100px;/*double the default height*/
     display: block;
 }
 
 /* Extra small devices (phones, less than 768px) */
-@media (min-width:0px) and (max-width: 768px) {
+@media screen and (min-width:0px) and (max-width: 768px) {
     textarea {width: 90%;}
     form.multiplechoice {width: 100%;}
+    h1 {margin-bottom: .25em}
+    li.link {  font-size: medium;}
+    #subtitle {display: none}
+    form.multiplechoiceIMG {
+        width: 100%;
+
+    }
+    label.multiplechoiceIMG {
+        max-width: 80%;
+        max-height: 50%;
+    }
+    form#continue {  padding-top: 10%;}
+
 }
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 992px) {
+@media screen and (min-width: 768px) and (max-width: 992px) {
     textarea {width: 70%;}
 }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1200px) {
+@media screen and (min-width: 992px) and (max-width: 1200px) {
     textarea {width: 50%;}
 }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
     textarea {width: 33%;}
 }
 
