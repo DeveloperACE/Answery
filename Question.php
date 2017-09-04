@@ -53,9 +53,14 @@ class Question {
 //
 //    }
 
-    public function hasSupplementaryImage() {
 
-	    if (!is_null($this->supplementaryImagePath) && is_string($this->supplementaryImagePath)) {
+//TODO: MOVE ME
+    public static function isImagePath($string) {
+        return in_array(pathinfo($string, PATHINFO_EXTENSION), Array('jpg','png','jpeg', 'gif'));
+    }
+
+    public function hasSupplementaryImage() {
+	    if (!is_null($this->supplementaryImagePath)) {
 	        return true;
         } else {
 	        return false;
@@ -63,12 +68,16 @@ class Question {
 
     }
 
-    /**
-     * @return null
-     */
-    public function getSupplementaryImagePath()
-    {
-        return $this->getFirstImagePathFromAPI($this->supplementaryImagePath);
+
+    public function getSupplementaryImagePath() {
+
+        if (self::isImagePath($this->supplementaryImagePath)) {
+            return $this->supplementaryImagePath;
+        } elseif ($this->supplementaryImagePath->isRawContent() == false) {
+            return $this->supplementaryImagePath->getRawValue();
+        } else {
+            echo("Invalid Image Path Encountered");
+        }
     }
 
 //    public function validateAnswerType() {
@@ -158,11 +167,14 @@ class Question {
 
     }
 
-    public static function getImagePathOptionsFromAPIOptions($input) {
+    public static function getImagePathOptionsFromAPIOptions($APIOptions) {
         $output = array();
-            for ($index = 0; $index < count($input); $index++) {
-                if ($input[$index]->getType() == OptionType::API) {
-                $output[] = new Option(OptionType::Image, Question::getFirstImagePathFromAPI($input[$index]->getContent()));
+        for ($index = 0; $index < count($APIOptions); $index++) {
+            if ($APIOptions[$index]->getType() == OptionType::API) {
+                $output[] = new Option(
+                    OptionType::Image,
+                    Question::getValueFromAPI($APIOptions[$index]->getContent(), $APIOptions[$index]->getKey())
+                );
             }
         }
         return $output;
@@ -196,17 +208,6 @@ class Question {
     }
 
 
-    public static function getFirstImagePathFromAPI($URL) {
-        $APIObject = json_decode(file_get_contents($URL), true);
-        foreach($APIObject as $key => $value) {
 
-            if (!in_array(pathinfo($value, PATHINFO_EXTENSION), Array('jpg','png','jpeg'))) {
-                return self::getFirstImagePathFromAPI($URL);
-            }
-
-            return $value;
-        }
-
-    }
 
 }

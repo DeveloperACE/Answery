@@ -13,7 +13,7 @@ $smarty->cache_lifetime = 120;
 $smarty->assign("cat", isset($_POST["cat"]));
 
 if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
-        $smarty->assign("catpath", Question::getFirstImagePathFromAPI('http://random.cat/meow'));
+        $smarty->assign("catpath", Question::getValueFromAPI('http://random.cat/meow', "file"));
 
 } else {
 
@@ -39,19 +39,45 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
 
         case AnswerType::MultipleChoice:
             //if API, get dog/cat
-            if ($questionObject->getFirstChoice()->getType() == OptionType::API) {
-                $smarty->assign("choices", Question::getImagePathOptionsFromAPIOptions($questionObject->getDesiredNumberOfChoices()));
-            } elseif ($questionObject->getFirstChoice()->getType() == OptionType::TextContentsOfLink) {
-                $smarty->assign("choices", Question::getRawAPIContentOptionsFromLinkOptions($questionObject->getDesiredNumberOfChoices()));
-            } else {
-                $smarty->assign("choices", $questionObject->getDesiredNumberOfChoices());
+            $questionChoices = $questionObject->getDesiredNumberOfChoices();
+            $choices = array();
+
+            foreach ($questionChoices as $choice) {
+
+                if ($choice->getType() == OptionType::API) {
+
+                    if ($choice->getContent()->isRawContent()){
+                        $choices[] = $choice->getContent()->getOptionValue();
+                    } else {
+
+                        $imagePath = $choice->getContent()->getOptionValue();
+                        while (!Question::isImagePath($imagePath)) {
+                            $imagePath = $choice->getContent()->getOptionValue();
+                        }
+
+                        $choices[] = $imagePath;
+                    }
+
+
+
+
+                } else {
+                    $choices[] = $choice;
+                }
             }
+
+            $smarty->assign("choices", $choices);
+
             break;
 
         case AnswerType::Rating:
             //if supp. img, get dog/cat
             if ($questionObject->hasSupplementaryImage()) {
-                $smarty->assign("ratingPhoto", $questionObject->getSupplementaryImagePath());
+                $imagePath = $questionObject->getSupplementaryImagePath();
+                while (!Question::isImagePath($imagePath)) {
+                    $imagePath = $questionObject->getSupplementaryImagePath();
+                }
+                $smarty->assign("ratingPhoto", $imagePath);
             }
             break;
     }

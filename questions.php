@@ -1,6 +1,7 @@
 <?php
 include_once("Question.php");
 include_once("Option.php");
+include_once("Api.php");
 include_once("options.php");
 
 //ikea furniture
@@ -41,7 +42,9 @@ $questions = array(
         null,
         AnswerType::MultipleChoice,
         array(
-            new Option(OptionType::API, "http://random.cat/meow")
+            new Option(OptionType::API,
+                new Api("http://random.cat/meow", "file")
+            )
         ),
         4
     ),
@@ -50,7 +53,10 @@ $questions = array(
         null,
         AnswerType::MultipleChoice,
         array(
-            new Option(OptionType::TextContentsOfLink, "http://setgetgo.com/randomword/get.php")
+            new Option(
+                OptionType::API,
+                new Api("http://setgetgo.com/randomword/get.php")
+            )
         ),
         4
     ),
@@ -59,7 +65,10 @@ $questions = array(
         null,
         AnswerType::MultipleChoice,
         array(
-            new Option(OptionType::API, "https://random.dog/woof.json")
+            new Option(
+                OptionType::API,
+                new Api("https://random.dog/woof.json", "url")
+            )
         ),
         4
     ),
@@ -74,7 +83,7 @@ $questions = array(
         "Which dog breed do you like most?",
         null,
         AnswerType::MultipleChoice,
-        $dogs,
+        Api::getTextOptionListFromArrayValue("http://dog.ceo/api/breeds/list", "message"),
         4
     ),
     new Question(
@@ -169,12 +178,12 @@ $questions = array(
         4
     ),
     new Question("How cute is this cat?",
-        "http://random.cat/meow",
+        new Api("http://random.cat/meow", "file"),
         AnswerType::Rating
     ),
     new Question(
         "How cute is this dog?",
-        "https://random.dog/woof.json",
+        new Api("https://random.dog/woof.json", "url"),
         AnswerType::Rating
     ),
     new Question("How much do you like ice cream?",
