@@ -53,7 +53,6 @@ Tweet</a>
             <textarea form="continue" required></textarea>
 
         {elseif $questionObject->getAnswerType() eq "multiplechoice"}
-
             {if $choices[0]->getType() eq "image"}
                 <form class="multiplechoiceIMG">
                 {foreach from=$choices key=$key item=$value}
@@ -63,7 +62,7 @@ Tweet</a>
             {elseif $choices[0]->getType() eq "text"}
                 <form class="multiplechoice">
                     {foreach from=$choices key=$key item=$value}
-                        <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required>{$value->getContent()}</label><br>
+                        <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required> {$value->getContent()|capitalize}</label><br>
                     {/foreach}
                 </form>
             {/if}
