@@ -103,6 +103,7 @@ label.multiplechoiceIMG > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES *
 
 form.rating {
     width: 360px;
+    margin: 10px auto;
 }
 img.rating {
     max-width:50%;
