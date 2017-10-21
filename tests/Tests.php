@@ -8,9 +8,9 @@
 
 use PHPUnit\Framework\TestCase;
 
-include_once("../Question.php");
-include_once("../Option.php");
-include_once("../Api.php");
+require_once("./Question.php");
+require_once("./Option.php");
+require_once("./Api.php");
 
 
 
