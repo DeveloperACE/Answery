@@ -3,6 +3,8 @@
 </p>
 
 # [Answery](https://answery.herokuapp.com)
+[![Build Status](https://travis-ci.org/DeveloperACE/Answery.svg?branch=master)](https://travis-ci.org/DeveloperACE/Answery)
+
 A simple site for people who like answering questions
 
 ## To Install Dependencies
