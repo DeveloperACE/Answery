@@ -64,18 +64,17 @@ class Api {
     }
 
 
-    //assumes that the content at $valueFinder is an array
-    public static function getTextOptionListFromArrayValue($apiLink, $valueFinder) {
+    //assumes that the content at index $valueFinder is an array
+    public static function getTextOptionListFromArrayValue($array) {
 
-        $apiContent = self::getValueFromAPI($apiLink, $valueFinder);
-
-        if (!is_array($apiContent)){
-            $apiContent = json_decode($apiContent, true);
-        }
-
+        $arrayValue = $array;
         $output = array();
 
-        foreach ($apiContent as $thing) {
+        if (!is_array($arrayValue)){
+            $arrayValue = json_decode($arrayValue, true);
+        }
+
+        foreach ($arrayValue as $thing) {
             $output[] = new Option(OptionType::Text, $thing);
         }
         return $output;

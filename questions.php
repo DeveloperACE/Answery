@@ -83,7 +83,7 @@ $questions = array(
         "Which dog breed do you like most?",
         null,
         AnswerType::MultipleChoice,
-        Api::getTextOptionListFromArrayValue("http://dog.ceo/api/breeds/list", "message"),
+        Api::getTextOptionListFromArrayValue(Api::getValueFromAPI("http://dog.ceo/api/breeds/list", "message")),
         4
     ),
     new Question(

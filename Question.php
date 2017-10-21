@@ -16,7 +16,7 @@ class Question {
 	public $supplementaryImagePath;
 	public $answerType;
     public $choices;
-    public $numberOfOptions;
+    public $numberOfOptions;//desired number of choices
 
     /**
      * Question constructor.
@@ -55,28 +55,35 @@ class Question {
 
 
 //TODO: MOVE ME
+    /**
+     * @param $string
+     * @return bool
+     */
     public static function isImagePath($string) {
-        return in_array(pathinfo($string, PATHINFO_EXTENSION), Array('jpg','png','jpeg', 'gif'));
-    }
-
-    public function hasSupplementaryImage() {
-	    if (!is_null($this->supplementaryImagePath)) {
-	        return true;
-        } else {
-	        return false;
-        }
+	    if (!is_string($string)) {return false;}
+	    else {
+	        return in_array(pathinfo($string, PATHINFO_EXTENSION), Array('jpg','png','jpeg', 'gif'));
+	    }
 
     }
+
+    public function hasSupplementaryImage() {return !is_null($this->supplementaryImagePath);}
 
 
     public function getSupplementaryImagePath() {
+        $input = $this->supplementaryImagePath;//this can be an Api() object or a string
 
-        if (self::isImagePath($this->supplementaryImagePath)) {
-            return $this->supplementaryImagePath;
-        } elseif ($this->supplementaryImagePath->isRawContent() == false) {
-            return $this->supplementaryImagePath->getRawValue();
+        //check if it is a valid image path string
+        if (self::isImagePath($input)) {
+            //return the path
+            return $input;
+
+            //if the image is from an API (is an API object and therefore has the isRawContent() method)
+        } elseif (gettype($input) == "object") {
+            return $input->getRawValue();
+
         } else {
-            echo("Invalid Image Path Encountered");
+            echo("Invalid Image Value Encountered");
         }
     }
 
@@ -127,7 +134,7 @@ class Question {
      * @return array
      * REDO MEEEEEE
      */
-    public function getDesiredNumberOfChoices()
+    public function getDesiredNumberOfChoices() //checkChoicesMatchDesiredNumberOfOptions
     {
         //$this->debug();
         if (count($this->choices) == 1) {
