@@ -20,30 +20,21 @@ class Api {
 
     }
 
+//TODO: validate path
+    /**
+     * @return mixed
+     */
+    public function getPath(){ return $this->path;}
 
     /**
      * @return mixed
      */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getKey()
-    {
-        return $this->key;
-    }
+    public function getKey(){ return $this->key;}
 
     /** can be used to see if API object is for image path ($rawContent = false) or not
      * @return bool
      */
-    public function isRawContent()
-    {
-        return $this->rawContent;
-    }
+    public function isRawContent(){return $this->rawContent;}
 
     public function getOptionValue() {
         if ($this->rawContent) {
@@ -59,15 +50,11 @@ class Api {
         }
     }
 
-    //gets standalone value (aka doesnt wrap it in an Option()) for use as a supplementary image
+    //gets standalone value (aka doesnt wrap it in an Option()). This method is used for getting a supplementary image
     public function getRawValue() {
         return self::getValueFromAPI($this->path, $this->key);
     }
 
-//    public function getType() {
-//
-//
-//    }
 
     public static function getValueFromAPI($apiLink, $valueFinder){
         //valueFinder can be a key or an index

@@ -104,34 +104,23 @@ class Question {
     /**
      * @return int
      */
-    public function getAnswerType()
-    {
-        return $this->answerType;
-    }
+    public function getAnswerType(){return $this->answerType;}
 
     /**
      * @return string
      */
-    public function getQuestion()
-    {
-        return $this->question;
-    }
+    public function getQuestion(){return $this->question;}
 
     /**
      * @return int
      */
-    public function getNumberOfOptions()
-    {
-        return $this->numberOfOptions;
-    }
+    public function getNumberOfOptions(){return $this->numberOfOptions;}
 
     /**
      * @return array
      */
-    public function getAllChoices()
-    {
-        return $this->choices;
-    }
+    //really shouldnt be used...
+    public function getAllChoices(){return $this->choices;}
 
 
     /**
@@ -167,33 +156,35 @@ class Question {
 
     }
 
-    public static function getImagePathOptionsFromAPIOptions($APIOptions) {
-        $output = array();
-        for ($index = 0; $index < count($APIOptions); $index++) {
-            if ($APIOptions[$index]->getType() == OptionType::API) {
-                $output[] = new Option(
-                    OptionType::Image,
-                    $APIOptions[$index]->getContent()->getRawValue()
-                );
-            }
-        }
-        return $output;
-    }
 
-    public static function getRawAPIContentOptionsFromLinkOptions($input) {
-        $output = array();
-        for ($index = 0; $index < count($input); $index++) {
-            if ($input[$index]->getType() == OptionType::TextContentsOfLink) {
-                $output[] = new Option(OptionType::Text, (string)file_get_contents($input[$index]->getContent()));
-            }
-        }
-        return $output;
-    }
-
-
-    public function getFirstChoice() {
-        return $this->getDesiredNumberOfChoices()[0];
-    }
+    //Depreceated
+//    public static function getImagePathOptionsFromAPIOptions($APIOptions) {
+//        $output = array();
+//        for ($index = 0; $index < count($APIOptions); $index++) {
+//            if ($APIOptions[$index]->getType() == OptionType::API) {
+//                $output[] = new Option(
+//                    OptionType::Image,
+//                    Api::getValueFromAPI($APIOptions[$index]->getContent(), $APIOptions[$index]->getKey())
+//                );
+//            }
+//        }
+//        return $output;
+//    }
+//    //depreceated?
+//    public static function getRawAPIContentOptionsFromLinkOptions($input) {
+//        $output = array();
+//        for ($index = 0; $index < count($input); $index++) {
+//            if ($input[$index]->getType() == OptionType::TextContentsOfLink) {
+//                $output[] = new Option(OptionType::Text, (string)file_get_contents($input[$index]->getContent()));
+//            }
+//        }
+//        return $output;
+//    }
+//
+//    //Depreceated?
+//    public function getFirstChoice() {
+//        return $this->getDesiredNumberOfChoices()[0];
+//    }
 
 
     /*

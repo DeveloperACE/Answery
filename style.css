@@ -196,21 +196,25 @@ textarea {
 
 /* Footer */
 form#continue {
-    width: 140px;
+    width: auto;
+    font-size: larger;
 }
+
 input[type="submit"] {
 
-     background:none;
-     color:red;
-     border:none;
-     font: inherit;
-     cursor: pointer;
-     text-decoration: none;
+    background:none;
+    border:none;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: none;
 }
+
+form#continue input[type="submit"] {  color:red; }
 form#skip input[type="submit"] {
     color:  #66a3ff;
     margin-top: 25px;
 }
+
 a {
     color: white;
 }
