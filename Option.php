@@ -27,70 +27,34 @@ class Option {
 		$this->correct = $correct;
 	}
 
-    /**
+    /** Returns the stored content set in the constructor
      * @return string
      */
-    public function getContent()
-    {
-//        switch ($this->type){
-//            case OptionType::API:
-//                return Question::getFirstImagePathFromAPI($this->content);
-//
-//                break;
-//
-//            case OptionType::ContentsOfLink:
-//                return file_get_contents($this->content);
-//                break;
-//
-//            case OptionType::Text:
-//                break;
-      //  }
-        return $this->content;
-    }
+    public function getContent(){return $this->content;}
 
 
-    public function duplicate() {
-        return new Option($this->type, $this->content, $this->correct);
-    }
+    /** Returns a new Option() object that holds the same data as the current one. {@see getDesiredNumberOfChoices}
+     * @return Option
+     */
+    public function duplicate() {return new Option($this->type, $this->content, $this->correct);}
 
-
-
-
-
-    /**
+    /** Returns the option type
      * @return string
      */
-    public function getType()
-    {
-        return $this->type;
-    }
+    public function getType(){return $this->type;}
 
-    /**
+    /** Sets the Option type in the few cases where it needs changing (if it even does, I dont remember if this is used)
      * @param mixed $type
      */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
+    public function setType($type){$this->type = $type;}
 
-//    /**
-//     * @return string
-//     */
-//    public function processContent()
-//    {
-//        return $this->type;
-//    }
-
-    /**
+    /** Returns true if this option was set as the correct one, false otherwise. (this is for an unimplemented feature)
      * @return boolean
      */
     public function isCorrect()
     {
-        if (is_null($this->correct)) {
-            return false;
-        } else {
-            return $this->correct;
-        }
+        if (is_null($this->correct)) {return false;}
+        else {return $this->correct;}
     }
 
 }

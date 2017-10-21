@@ -85,15 +85,15 @@ Tweet</a>
 <footer>
     <form id="continue" action="." method="post">
         {if $cat eq 0}
-        <input type="hidden" name="cat" value="1"></input>
+        <input type="hidden" name="cat" value="1">
         {elseif cat eq 1}
-        <input type="hidden" name="cat" value="0"></input>
+        <input type="hidden" name="cat" value="0">
         {/if}
-        <input type="submit" value="Continue >"></input>
+        <input type="submit" value="Continue >">
     </form>
     {if $cat eq 0}
-        <input type="submit" value="Skip >"></input>
     <form id="skip" action=".">
+        <input type="submit" value="Skip >">
     </form>
     {/if}
 </footer>

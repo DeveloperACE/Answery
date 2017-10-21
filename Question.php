@@ -35,41 +35,27 @@ class Question {
         $this->numberOfOptions = $numberOfOptions;
     }
 
-
-//    private function isThereAQuestion() {
-//        if (strcmp($this->question, "") !== 0) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-//
-//    private function validateMultipleChoice() {
-//        if ($this->isThereAQuestion() && is_array($this->choices) && $this->numberOfOptions >= 1) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//
-//    }
-
-
-//TODO: MOVE ME
-    /**
-     * @param $string
+    /** checks to see if the extension for the provided path ends in .jpg, .png, .jpeg, or .gif
+     * @param $path
      * @return bool
      */
-    public static function isImagePath($string) {
-	    if (!is_string($string)) {return false;}
+    public static function isImagePath($path) {
+	    if (!is_string($path)) {return false;}
 	    else {
-	        return in_array(pathinfo($string, PATHINFO_EXTENSION), Array('jpg','png','jpeg', 'gif'));
+	        return in_array(pathinfo($path, PATHINFO_EXTENSION), Array('jpg','png','jpeg', 'gif'));
 	    }
 
     }
 
+    /** returns true if the supplementary image path has been set (is not null)
+     * @return bool
+     */
     public function hasSupplementaryImage() {return !is_null($this->supplementaryImagePath);}
 
 
+    /** Returns the path to the supplementary image for the question
+     * @return string
+     */
     public function getSupplementaryImagePath() {
         $input = $this->supplementaryImagePath;//this can be an Api() object or a string
 
@@ -80,61 +66,38 @@ class Question {
 
             //if the image is from an API (is an API object and therefore has the isRawContent() method)
         } elseif (gettype($input) == "object") {
-            return $input->getRawValue();
+            return $input->getUnwrappedValue();
 
-        } else {
-            echo("Invalid Image Value Encountered");
         }
     }
 
-//    public function validateAnswerType() {
-//        switch ($this->answerType) {
-//            case AnswerType::ShortAnswer:
-//
-//               return $this->isThereAQuestion();
-//
-//                    break;
-//
-//            case AnswerType::MultipleChoice:
-//                if ($this->isThereAQuestion() && !is_null($this->choices) && $this->numberOfOptions >= 1)
-//
-//                break;
-//
-//            case AnswerType::Rating:
-//                break;
-//
-//            default:
-//                break;
-//        }
-//    }
-
-    /**
+    /** Returns the answer type set during construction
      * @return int
      */
     public function getAnswerType(){return $this->answerType;}
 
-    /**
+    /** Returns the question text set during construction
      * @return string
      */
     public function getQuestion(){return $this->question;}
 
-    /**
+    /** Returns the number of options set during construction
      * @return int
      */
     public function getNumberOfOptions(){return $this->numberOfOptions;}
 
-    /**
+    /** Returns the set of options given during construction (currently only used for unit testing???)
      * @return array
      */
-    //really shouldnt be used...
     public function getAllChoices(){return $this->choices;}
 
 
-    /**
+    /** Returns an array of options with its length equal to the numberOfOptions provided in the constructor
+     * if there are less choices than the number of options, the provided choice is copied as many times as needed
+     * if there are more choices than the number of options, random choices are picked and the rest are ignored
      * @return array
-     * REDO MEEEEEE
      */
-    public function getDesiredNumberOfChoices() //checkChoicesMatchDesiredNumberOfOptions
+    public function getDesiredNumberOfChoices()
     {
         //$this->debug();
         if (count($this->choices) == 1) {
@@ -162,47 +125,4 @@ class Question {
         }
 
     }
-
-
-    //Depreceated
-//    public static function getImagePathOptionsFromAPIOptions($APIOptions) {
-//        $output = array();
-//        for ($index = 0; $index < count($APIOptions); $index++) {
-//            if ($APIOptions[$index]->getType() == OptionType::API) {
-//                $output[] = new Option(
-//                    OptionType::Image,
-//                    Api::getValueFromAPI($APIOptions[$index]->getContent(), $APIOptions[$index]->getKey())
-//                );
-//            }
-//        }
-//        return $output;
-//    }
-//    //depreceated?
-//    public static function getRawAPIContentOptionsFromLinkOptions($input) {
-//        $output = array();
-//        for ($index = 0; $index < count($input); $index++) {
-//            if ($input[$index]->getType() == OptionType::TextContentsOfLink) {
-//                $output[] = new Option(OptionType::Text, (string)file_get_contents($input[$index]->getContent()));
-//            }
-//        }
-//        return $output;
-//    }
-//
-//    //Depreceated?
-//    public function getFirstChoice() {
-//        return $this->getDesiredNumberOfChoices()[0];
-//    }
-
-
-    /*
-    public static function var_dump_pre($mixed = null) {
-        echo '<pre>';
-        var_dump($mixed);
-        echo '</pre>';
-        return null;
-    }
-*/
-
-
-
 }

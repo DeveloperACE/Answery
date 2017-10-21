@@ -148,8 +148,8 @@ class Tests extends TestCase
         );
 
 
-        $this->assertEquals($expected, Api::getTextOptionListFromArrayValue($arrayInput));
-        $this->assertEquals($expected, Api::getTextOptionListFromArrayValue($input));
+        $this->assertEquals($expected, Api::getTextOptionListFromArray($arrayInput));
+        $this->assertEquals($expected, Api::getTextOptionListFromArray($input));
 
 
     }

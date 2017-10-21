@@ -1,7 +1,7 @@
 <?php
 
 require ("vendor/smarty/smarty/libs/Smarty.class.php");
-require("questions.php");
+require("data.php");
 
 $smarty = new Smarty;
 
@@ -13,7 +13,7 @@ $smarty->cache_lifetime = 120;
 $smarty->assign("cat", isset($_POST["cat"]));
 
 if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
-        $smarty->assign("catpath", Question::getValueFromAPI('http://random.cat/meow', "file"));
+        $smarty->assign("catpath", Api::getValueFromAPI('http://random.cat/meow', "file"));
 
 } else {
 

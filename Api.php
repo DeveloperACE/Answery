@@ -1,41 +1,40 @@
 <?php
-
-
-
 class Api {
     public $path;
     public $key;
     public $rawContent;
 
-
+    /**
+     * Api constructor.
+     * @param $path
+     * @param null $key
+     */
     public function __construct($path, $key = null) {
         $this->path = $path;
         $this->key = $key;
 
-        if (is_null($key)) {
-            $this->rawContent = true;
-        } else {
-            $this->rawContent = false;
-        }
-
+        if (is_null($key)) {$this->rawContent = true;}
+        else {$this->rawContent = false;}
     }
 
-//TODO: validate path
-    /**
-     * @return mixed
+    /** returns the path that was set in the constructor
+     * @return string
      */
-    public function getPath(){ return $this->path;}
+    public function getPath(){ return (string)$this->path;}
 
-    /**
-     * @return mixed
+    /** returns the key that was set in the constructor
+     * @return string
      */
     public function getKey(){ return $this->key;}
 
-    /** can be used to see if API object is for image path ($rawContent = false) or not
+    /** returns true if the object is set to return a raw value (i.e. an image path), false if it is set to  wrap output in an Option() object
      * @return bool
      */
     public function isRawContent(){return $this->rawContent;}
 
+    /** Returns the value of the
+     * @return Option
+     */
     public function getValueAsOption() {
         if ($this->rawContent) {
             return new Option(
@@ -50,22 +49,28 @@ class Api {
         }
     }
 
-    //gets standalone value (aka doesnt wrap it in an Option()). This method is used for getting a supplementary image
-    public function getRawValue() {
-        return self::getValueFromAPI($this->path, $this->key);
-    }
+    /** returns the "raw" value of the API call stored in this object (aka the path and key fields) without being wrapped in Option()
+     * @return mixed
+     */
+    public function getUnwrappedValue() {return self::getValueFromAPI($this->path, $this->key);}
 
-
-    public static function getValueFromAPI($apiLink, $valueFinder){
+    /** Queries the given path and returns the value at the given $valueFinder
+     * @param $path
+     * @param $valueFinder - can be a key (integer) or a string that is used to locate the value at the given path
+     * @return mixed
+     */
+    public static function getValueFromAPI($path, $valueFinder){
         //valueFinder can be a key or an index
-        $apiResult = json_decode(file_get_contents($apiLink), true);
+        $apiResult = json_decode(file_get_contents($path), true);
 
         return $apiResult[$valueFinder];
     }
 
-
-    //assumes that the content at index $valueFinder is an array
-    public static function getTextOptionListFromArrayValue($array) {
+    /** Takes an array (assumed to contain strings) and wraps each string in an Option() object with the type set to OptionType::Text
+     * @param $array
+     * @return array
+     */
+    public static function getTextOptionListFromArray($array) {
 
         $arrayValue = $array;
         $output = array();
@@ -79,21 +84,5 @@ class Api {
         }
         return $output;
     }
-
-
-
-//
-//    public static function getFirstImagePathFromAPI($URL) {
-//        $APIObject = json_decode(file_get_contents($URL), true);
-//        foreach($APIObject as $key => $value) {
-//
-//            if (!in_array(pathinfo($value, PATHINFO_EXTENSION), Array('jpg','png','jpeg'))) {
-//                return self::getFirstImagePathFromAPI($URL);
-//            }
-//
-//            return $value;
-//        }
-//
-//    }
 
 }
