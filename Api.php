@@ -36,7 +36,7 @@ class Api {
      */
     public function isRawContent(){return $this->rawContent;}
 
-    public function getOptionValue() {
+    public function getValueAsOption() {
         if ($this->rawContent) {
             return new Option(
                 OptionType::Text,

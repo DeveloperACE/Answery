@@ -47,12 +47,12 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
                 if ($choice->getType() == OptionType::API) {
 
                     if ($choice->getContent()->isRawContent()){
-                        $choices[] = $choice->getContent()->getOptionValue();
+                        $choices[] = $choice->getContent()->getValueAsOption();
                     } else {
 
-                        $imagePath = $choice->getContent()->getOptionValue();
+                        $imagePath = $choice->getContent()->getValueAsOption();
                         while (!Question::isImagePath($imagePath)) {
-                            $imagePath = $choice->getContent()->getOptionValue();
+                            $imagePath = $choice->getContent()->getValueAsOption();
                         }
 
                         $choices[] = $imagePath;
