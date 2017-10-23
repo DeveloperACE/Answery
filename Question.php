@@ -99,29 +99,18 @@ class Question {
      */
     public function getDesiredNumberOfChoices()
     {
-        //$this->debug();
-        if (count($this->choices) == 1) {
+        $outputChoices = array();
 
-            while (count($this->choices) < $this->numberOfOptions) {
-
-
-                $this->choices[] = $this->choices[0]->duplicate();
-
+        if (count($this->choices) == $this->numberOfOptions) {return $this->choices;}
+        else if (count($this->choices) != $this->numberOfOptions) {
+            while (count($outputChoices) != $this->numberOfOptions) {
+                if (count($this->choices) == 1) {
+                    $outputChoices[] = $this->choices[0]->duplicate();
+                } else {
+                    $outputChoices[] = $this->choices[mt_rand(0, count($this->choices)-1)];
+                }
             }
-            //$this->setChoices($options);
-            return $this->choices;
-
-
-        } elseif (count($this->choices) > $this->numberOfOptions) {
-
-            for ($questionNumber=0; $questionNumber <= $this->numberOfOptions-1; $questionNumber++) {
-
-                $choices[] = $this->choices[mt_rand(0, count($this->choices)-1)];
-            }
-            return $choices;
-
-        } elseif (count($this->choices) == $this->numberOfOptions) {
-            return $this->choices;
+            return $outputChoices;
         }
 
     }
