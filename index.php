@@ -46,24 +46,18 @@ if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
 
                 if ($choice->getType() == OptionType::API) {
 
-                    if ($choice->getContent()->isRawContent()){
-                        $choices[] = $choice->getContent()->getValueAsOption();
-                    } else {
+                    if ($choice->getContent()->isRawContent()){ $choices[] = $choice->getContent()->getValueAsOption();}
+                    else {
+                        $imageOptionObject = $choice->getContent()->getValueAsOption();
 
-                        $imagePath = $choice->getContent()->getValueAsOption();
-                        while (!Question::isImagePath($imagePath)) {
-                            $imagePath = $choice->getContent()->getValueAsOption();
+                        //keep getting images until you have 4 images
+                        while (!Question::isImagePath($imageOptionObject->getContent())) {
+                            $imageOptionObject = $choice->getContent()->getValueAsOption();
                         }
 
-                        $choices[] = $imagePath;
+                        $choices[] = $imageOptionObject;
                     }
-
-
-
-
-                } else {
-                    $choices[] = $choice;
-                }
+                } else {$choices[] = $choice;}
             }
 
             $smarty->assign("choices", $choices);

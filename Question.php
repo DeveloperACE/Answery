@@ -44,7 +44,6 @@ class Question {
 	    else {
 	        return in_array(pathinfo($path, PATHINFO_EXTENSION), Array('jpg','png','jpeg', 'gif'));
 	    }
-
     }
 
     /** returns true if the supplementary image path has been set (is not null)
@@ -60,15 +59,9 @@ class Question {
         $input = $this->supplementaryImagePath;//this can be an Api() object or a string
 
         //check if it is a valid image path string
-        if (self::isImagePath($input)) {
-            //return the path
-            return $input;
-
-            //if the image is from an API (is an API object and therefore has the isRawContent() method)
-        } elseif (gettype($input) == "object") {
-            return $input->getUnwrappedValue();
-
-        }
+        if (self::isImagePath($input)) {return $input;}
+        //if the image is from an API (is an API object and therefore has the getUnwrappedContent() method)
+        elseif (gettype($input) == "object") {return $input->getUnwrappedValue();}
     }
 
     /** Returns the answer type set during construction
@@ -95,7 +88,7 @@ class Question {
     /** Returns an array of options with its length equal to the numberOfOptions provided in the constructor
      * if there are less choices than the number of options, the provided choice is copied as many times as needed
      * if there are more choices than the number of options, random choices are picked and the rest are ignored
-     * @return array
+     * @return array of unprocessed option objects
      */
     public function getDesiredNumberOfChoices()
     {

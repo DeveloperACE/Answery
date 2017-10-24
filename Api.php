@@ -13,6 +13,7 @@ class Api {
         $this->path = $path;
         $this->key = $key;
 
+        //if no key was provided, the content of this API is just the content of the URL given in $path (used for text)
         if (is_null($key)) {$this->rawContent = true;}
         else {$this->rawContent = false;}
     }
@@ -59,12 +60,7 @@ class Api {
      * @param $valueFinder - can be a key (integer) or a string that is used to locate the value at the given path
      * @return mixed
      */
-    public static function getValueFromAPI($path, $valueFinder){
-        //valueFinder can be a key or an index
-        $apiResult = json_decode(file_get_contents($path), true);
-
-        return $apiResult[$valueFinder];
-    }
+    public static function getValueFromAPI($path, $valueFinder){return json_decode(file_get_contents($path), true)[$valueFinder];}
 
     /** Takes an array (assumed to contain strings) and wraps each string in an Option() object with the type set to OptionType::Text
      * @param $array
