@@ -26,6 +26,15 @@ foreach ($countryList as $thisCountry) {
 //these are the questions that answery randomly picks from
 $excitingQuestions = array(
     new Question(
+        "Which color do you prefer?",
+        null,
+        AnswerType::MultipleChoice,
+        array(
+            new Option(OptionType::Color,"random")
+        ),
+        4
+    ),
+    new Question(
         "Which of these cats is cuter?",
         null,
         AnswerType::MultipleChoice,

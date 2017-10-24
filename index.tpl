@@ -68,7 +68,7 @@ Tweet</a>
 
         {elseif $questionObject->getAnswerType() eq "multiplechoice"}
             {if $choices[0]->getType() eq "image"}
-                <form class="multiplechoiceIMG">
+                <form class="multiplechoiceFlex">
                 {foreach from=$choices key=$key item=$value}
                     <label class="multiplechoiceIMG"><input type="radio" form="continue" name="multiplechoice" required><img class="multiplechoiceimage" src="{$value->getContent()}"></label><br>
                 {/foreach}
@@ -77,6 +77,12 @@ Tweet</a>
                 <form class="multiplechoice">
                     {foreach from=$choices key=$key item=$value}
                         <label class="multiplechoice"><input type="radio" form="continue" name="multiplechoice" required> {$value->getContent()|capitalize}</label><br>
+                    {/foreach}
+                </form>
+            {elseif $choices[0]->getType() eq "color"}
+                <form class="multiplechoiceFlex">
+                    {foreach from=$choices key=$key item=$value}
+                        <label class="multiplechoiceColor"><input type="radio" form="continue" name="multiplechoice" required> <div class="multiplechoiceColor" style="background-color: {$value->getContent()}"></div></label><br>
                     {/foreach}
                 </form>
             {/if}
