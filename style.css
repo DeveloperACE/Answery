@@ -80,6 +80,7 @@ label.multiplechoiceIMG {
     flex-basis: content;
     max-width: 33%;
     max-height: 30%;
+    overflow: hidden;
 }
 img.multiplechoiceimage {
     max-width: 100%;
