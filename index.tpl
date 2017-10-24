@@ -47,6 +47,20 @@ Tweet</a>
         <img id="rewardImg" src="{$rewardImgPath}" />
 
     {else}
+
+    <form id="filter" action="." method="post">
+        Filter out non-unique questions?
+        <input type="radio" name="filterBoringQuestions" value="1" {if isset($filterBoringQuestions) and $filterBoringQuestions eq 1}checked{/if}>yes</input>&nbsp;
+            <input type="radio" name="filterBoringQuestions" value="0" {if  isset($filterBoringQuestions) and $filterBoringQuestions eq 0}checked{/if}>no</input>&nbsp;
+
+        {if $prefsUpdated}
+            <input type="submit" value="Saved!" disabled>
+        {else}
+            <input type="submit" value="Save Preference">
+        {/if}
+
+    </form>
+
     <h2>{$questionText}</h2>
 
         {if $questionObject->getAnswerType() eq "shortanswer"}

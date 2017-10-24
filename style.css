@@ -43,7 +43,7 @@ li.link {
     text-align: center;
 }
 
-hr {margin-bottom: 40px;}
+/*hr {margin-bottom: 40px;}*/
 
 
 
@@ -52,6 +52,22 @@ hr {margin-bottom: 40px;}
 form {
     margin: 0 auto;
     text-align: center;
+}
+
+form#filter {
+    font-size: small;
+}
+form#filter input[type="submit"]:disabled {
+    color: #000;
+    background: none;
+    border: none;
+    font: inherit;
+    font-weight: bold;
+    cursor: default;
+    text-decoration: none;
+}
+form#filter input[type="submit"]:disabled:hover {
+    text-decoration: none;
 }
 small{
     text-align: center;

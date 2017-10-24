@@ -24,37 +24,7 @@ foreach ($countryList as $thisCountry) {
 
 
 //these are the questions that answery randomly picks from
-$questions = array(
-
-    new Question("Describe the breed of dog you like best and why you like them."),
-    new Question("Describe the weirdest/most adorable story you have of you when you were a kid"),
-    new Question("What do you think the purpose of a relationship is?"),
-    new Question("Describe your childhood best friend"),
-    new Question("What is your favorite emoji and why?"),
-    new Question("What is your favorite weather and why?"),
-    new Question("Describe your ideal relationship"),
-    new Question("What personality trait do you see the most in yourself and why?"),
-    new Question("What presidential administration were you born under?"),//possibly make into a dropdown?
-    new Question("What was your favorite event that occured during the year you were born?"),
-    new Question("What is your zodiac sign?"),
-    new Question("Who is your favorite actor and why?"),
-    new Question("What is your favorite book and why?"),
-    new Question("What is your favorite book series and why?"),
-    new Question("What is your favorite author and why?"),
-    new Question("What is your favorite ice cream flavor and why?"),
-    new Question("What is your favorite type of sweater and why?"),
-    new Question("What is your favorite movie and why?"),
-    new Question("What is your favorite TV show and why?"),
-    new Question("What is your favorite musical and why?"),
-    new Question("What is your favorite disney movie and why?"),
-    new Question("What excites you the most?"),
-    new Question("If you could go anywhere, would it be to a place or a person? Where/who and why?"),
-    new Question("What superpower would you most like to have and why?"),
-    new Question("If you could only have/use one piece of furniture for the rest of your life what would it be?"),
-    new Question("Whats your favorite thing to do when you have guests over?"),
-    new Question("If you could only have one social media account what would it be?"),
-    new Question("How much wood could a woodchuck chuck if a woodchuck could chuck norris?"),
-    new Question("If you could have dinner with anyone living or dead, who would it be and why?"),
+$excitingQuestions = array(
     new Question(
         "Which of these cats is cuter?",
         null,
@@ -111,6 +81,50 @@ $questions = array(
         Api::getTextOptionListFromArray(Api::getValueFromAPI("http://dog.ceo/api/breeds/list", "message")),
         4
     ),
+
+    new Question("How cute is this cat?",
+        new Api("http://random.cat/meow", "file"),
+        AnswerType::Rating
+    ),
+    new Question(
+        "How cute is this dog?",
+        new Api("https://random.dog/woof.json", "url"),
+        AnswerType::Rating
+    ),
+
+);
+
+
+$boringQuestions = array(
+    new Question("Describe the breed of dog you like best and why you like them."),
+    new Question("Describe the weirdest/most adorable story you have of you when you were a kid"),
+    new Question("What do you think the purpose of a relationship is?"),
+    new Question("Describe your childhood best friend"),
+    new Question("What is your favorite emoji and why?"),
+    new Question("What is your favorite weather and why?"),
+    new Question("Describe your ideal relationship"),
+    new Question("What personality trait do you see the most in yourself and why?"),
+    new Question("What presidential administration were you born under?"),//possibly make into a dropdown?
+    new Question("What was your favorite event that occured during the year you were born?"),
+    new Question("What is your zodiac sign?"),
+    new Question("Who is your favorite actor and why?"),
+    new Question("What is your favorite book and why?"),
+    new Question("What is your favorite book series and why?"),
+    new Question("What is your favorite author and why?"),
+    new Question("What is your favorite ice cream flavor and why?"),
+    new Question("What is your favorite type of sweater and why?"),
+    new Question("What is your favorite movie and why?"),
+    new Question("What is your favorite TV show and why?"),
+    new Question("What is your favorite musical and why?"),
+    new Question("What is your favorite disney movie and why?"),
+    new Question("What excites you the most?"),
+    new Question("If you could go anywhere, would it be to a place or a person? Where/who and why?"),
+    new Question("What superpower would you most like to have and why?"),
+    new Question("If you could only have/use one piece of furniture for the rest of your life what would it be?"),
+    new Question("Whats your favorite thing to do when you have guests over?"),
+    new Question("If you could only have one social media account what would it be?"),
+    new Question("How much wood could a woodchuck chuck if a woodchuck could chuck norris?"),
+    new Question("If you could have dinner with anyone living or dead, who would it be and why?"),
     new Question(
         "What do you want the most right now?",
         null,
@@ -201,15 +215,6 @@ $questions = array(
             new Option(OptionType::Text, "None of the above")
         ),
         4
-    ),
-    new Question("How cute is this cat?",
-        new Api("http://random.cat/meow", "file"),
-        AnswerType::Rating
-    ),
-    new Question(
-        "How cute is this dog?",
-        new Api("https://random.dog/woof.json", "url"),
-        AnswerType::Rating
     ),
     new Question("How much do you like ice cream?",
         null,

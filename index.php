@@ -28,7 +28,50 @@ if(isset($_POST["reward"]) && $_POST["reward"]=="1") {
 
 } else {
 
-    //gets a random question from the sub array of question types
+    //assume user wants all questions
+    $questions = $excitingQuestions + $boringQuestions;
+
+
+    //SETTING TPL VARS
+
+    $smarty->assign("prefsUpdated", ($_SERVER["REQUEST_METHOD"] == "POST"));
+
+    //if either (post is set and == 1) or (cookie is set and == 1), set tpl var to 1
+    if ((isset($_POST["filterBoringQuestions"]) && $_POST["filterBoringQuestions"] == 1) || (isset($_COOKIE["filterBoringQuestions"]) && $_COOKIE["filterBoringQuestions"] == 1)) {
+        //set smarty var to one
+        $smarty->assign("filterBoringQuestions", 1);
+    }
+
+    //if either (post is set and == 0) or (cookie is set and == 0), set tpl var to 0
+    if ((isset($_POST["filterBoringQuestions"]) && $_POST["filterBoringQuestions"] == 0) || (isset($_COOKIE["filterBoringQuestions"]) && $_COOKIE["filterBoringQuestions"] == 0)) {
+        //set smarty var to one
+        $smarty->assign("filterBoringQuestions", 0);
+    }
+
+
+
+
+//setting cookie
+
+    //is user opts to filter questions, set the cookie
+    if((isset($_POST["filterBoringQuestions"]) && $_POST["filterBoringQuestions"] == 1)) {
+        setcookie("filterBoringQuestions", 1);
+        $smarty->assign("filterBoringQuestions", 1);
+    }
+
+    //unset cookie if user submits no
+    if (isset($_POST["filterBoringQuestions"]) && $_POST["filterBoringQuestions"] == 0 ) {setcookie("filterBoringQuestions", 0);}
+
+
+    //filter questions
+
+    if ($smarty->getTemplateVars("filterBoringQuestions") !== null && $smarty->getTemplateVars("filterBoringQuestions")) {
+            $questions = $excitingQuestions;
+    }
+
+
+
+    //gets a random question
     $questionID = mt_rand(0, count($questions)-1);
 
     $questionObject = $questions[$questionID];
