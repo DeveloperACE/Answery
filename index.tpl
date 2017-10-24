@@ -25,7 +25,7 @@
  </ul>
      <div class="socialMediaButtons">
      {nocache}
-     {if isset($catpath)}
+     {if $reward}
 
          <a class="twitter-share-button"
       href="https://twitter.com/intent/tweet?text=Answer%20questions%3A%20get%20cats!">
@@ -42,9 +42,9 @@ Tweet</a>
 
     <hr>
 {nocache}
-    {if isset($catpath)}
-    <h2>Here's your reward cat!</h2>
-        <img id="rewardcat" src="{$catpath}" />
+    {if isset($rewardImgPath)}
+    <h2>Here's your cute reward photo!</h2>
+        <img id="rewardImg" src="{$rewardImgPath}" />
 
     {else}
     <h2>{$questionText}</h2>
@@ -84,14 +84,14 @@ Tweet</a>
     {/if}
 <footer>
     <form id="continue" action="." method="post">
-        {if $cat eq 0}
-        <input type="hidden" name="cat" value="1">
-        {elseif cat eq 1}
-        <input type="hidden" name="cat" value="0">
+        {if $reward eq 0}
+        <input type="hidden" name="reward" value="1">
+        {elseif reward eq 1}
+        <input type="hidden" name="reward" value="0">
         {/if}
         <input type="submit" value="Continue >">
     </form>
-    {if $cat eq 0}
+    {if $reward eq 0}
     <form id="skip" action=".">
         <input type="submit" value="Skip >">
     </form>

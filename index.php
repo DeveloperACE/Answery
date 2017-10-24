@@ -10,10 +10,21 @@ $smarty->debugging = false;
 $smarty->caching = true;
 $smarty->cache_lifetime = 120;
 
-$smarty->assign("cat", isset($_POST["cat"]));
+$smarty->assign("reward", isset($_POST["reward"]));
 
-if(isset($_POST["cat"]) && $_POST["cat"]=="1") {
-        $smarty->assign("catpath", Api::getValueFromAPI('http://random.cat/meow', "file"));
+if(isset($_POST["reward"]) && $_POST["reward"]=="1") {
+    switch (mt_rand(0, 1)) {
+        case 0:
+            $smarty->assign("rewardImgPath", Api::getValueFromAPI('http://random.cat/meow', "file"));
+            break;
+        case 1:
+            $smarty->assign("rewardImgPath", Api::getValueFromAPI('http://random.dog/woof.json', "url"));
+
+            break;
+        default:
+            break;
+    }
+      //  $smarty->assign("rewardImgPath", Api::getValueFromAPI('http://random.cat/meow', "file"));
 
 } else {
 
