@@ -98,6 +98,13 @@ $questions = array(
         4
     ),
     new Question(
+        "Which country would you most like to live in?",
+        null,
+        AnswerType::MultipleChoice,
+        $countries,
+        4
+    ),
+    new Question(
         "Which dog breed do you like most?",
         null,
         AnswerType::MultipleChoice,
