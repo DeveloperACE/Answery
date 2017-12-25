@@ -1,7 +1,7 @@
 <?php
 include_once("Question.php");
 include_once("Option.php");
-include_once("Api.php");
+include_once("OtherApi.php");
 //ikea furniture
 
 //these are lists of data that are used to produce possible answers to questions that I could not find an API for
@@ -39,8 +39,8 @@ $excitingQuestions = array(
         null,
         AnswerType::MultipleChoice,
         array(
-            new Option(OptionType::API,
-                new Api("http://random.cat/meow", "file")
+            new Option(OptionType::OtherAPI,
+                new OtherApi("http://random.cat/meow", "file")
             )
         ),
         4
@@ -51,8 +51,8 @@ $excitingQuestions = array(
         AnswerType::MultipleChoice,
         array(
             new Option(
-                OptionType::API,
-                new Api("http://setgetgo.com/randomword/get.php")
+                OptionType::OtherAPI,
+                new OtherApi("http://setgetgo.com/randomword/get.php")
             )
         ),
         4
@@ -63,8 +63,8 @@ $excitingQuestions = array(
         AnswerType::MultipleChoice,
         array(
             new Option(
-                OptionType::API,
-                new Api("https://random.dog/woof.json", "url")
+                OptionType::OtherAPI,
+                new OtherApi("https://random.dog/woof.json", "url")
             )
         ),
         4
@@ -87,17 +87,17 @@ $excitingQuestions = array(
         "Which dog breed do you like most?",
         null,
         AnswerType::MultipleChoice,
-        Api::getTextOptionListFromArray(Api::getValueFromAPI("http://dog.ceo/api/breeds/list", "message")),
+        OtherApi::getTextOptionListFromArray(OtherApi::getValueFromAPI("http://dog.ceo/api/breeds/list", "message")),
         4
     ),
 
     new Question("How cute is this cat?",
-        new Api("http://random.cat/meow", "file"),
+        new OtherApi("http://random.cat/meow", "file"),
         AnswerType::Rating
     ),
     new Question(
         "How cute is this dog?",
-        new Api("https://random.dog/woof.json", "url"),
+        new OtherApi("https://random.dog/woof.json", "url"),
         AnswerType::Rating
     ),
 

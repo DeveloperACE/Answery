@@ -1,7 +1,7 @@
 <?php
 abstract class OptionType
 {
-    const API = "API";
+    const OtherAPI = "otherAPI";
     const Image = "image";
     const Text = "text";
     const Color = "color";

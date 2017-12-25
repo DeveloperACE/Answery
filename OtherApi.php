@@ -1,5 +1,5 @@
 <?php
-class Api {
+class OtherApi {
     public $path;
     public $key;
     public $rawContent;

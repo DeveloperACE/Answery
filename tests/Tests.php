@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 require_once("./Question.php");
 require_once("./Option.php");
-require_once("./Api.php");
+require_once("./OtherApi.php");
 
 
 
@@ -99,13 +99,13 @@ class Tests extends TestCase
         $path = "http://random.cat/meow";
         $key = "file";
 
-        $api = new Api($path, $key);
+        $api = new OtherApi($path, $key);
 
         $this->assertEquals($path, $api->getPath());
         $this->assertEquals($key, $api->getKey());
         $this->assertFalse($api->isRawContent());
 
-        $api = new Api($path);//let $key default to none
+        $api = new OtherApi($path);//let $key default to none
 
         $this->assertTrue($api->isRawContent());
     }
@@ -114,7 +114,7 @@ class Tests extends TestCase
         $path = "http://random.cat/meow";
         $key = "file";
 
-        $api = new Api($path, $key);//raw content = false
+        $api = new OtherApi($path, $key);//raw content = false
 
 
         //checkin these three because it returns results as an Option().
@@ -131,7 +131,7 @@ class Tests extends TestCase
         $manual = json_decode(file_get_contents($path), true)[$key];
 
         $this->assertTrue(Question::isImagePath($manual));
-        $this->assertTrue(Question::isImagePath(Api::getValueFromAPI($path, $key)));
+        $this->assertTrue(Question::isImagePath(OtherApi::getValueFromAPI($path, $key)));
 
 
     }
@@ -148,8 +148,8 @@ class Tests extends TestCase
         );
 
 
-        $this->assertEquals($expected, Api::getTextOptionListFromArray($arrayInput));
-        $this->assertEquals($expected, Api::getTextOptionListFromArray($input));
+        $this->assertEquals($expected, OtherApi::getTextOptionListFromArray($arrayInput));
+        $this->assertEquals($expected, OtherApi::getTextOptionListFromArray($input));
 
 
     }
