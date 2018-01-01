@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta property="og:site_name" content="Answery" />
     <meta property="og:image" content="https://answery.herokuapp.com/answery-logo.jpg" />
-    <meta name="description" content="A simple webapp for people who like answering random questions">
-    <meta name="keywords" content="Answery, cats, cute, boredom, questions">
+    <meta name="description" content="Answery is a simple webapp for people who like answering random questions but dont really care about the answers.">
+    <meta name="keywords" content="Answery, cats, dogs, cute, boredom, questions, buzzfeed, colors, countries, random">
     <meta name="author" content="Adrian Edwards">
 
     <link rel="apple-touch-icon" href="answery-logo.png">
