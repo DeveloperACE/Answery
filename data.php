@@ -35,6 +35,15 @@ $excitingQuestions = array(
         4
     ),
     new Question(
+        "Which color looks ugliest?",
+        null,
+        AnswerType::MultipleChoice,
+        array(
+            new Option(OptionType::Color,"random")
+        ),
+        4
+    ),
+    new Question(
         "Which of these cats is cuter?",
         null,
         AnswerType::MultipleChoice,
