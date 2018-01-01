@@ -27,13 +27,9 @@
      {nocache}
      {if $reward}
 
-         <a class="twitter-share-button"
-      href="https://twitter.com/intent/tweet?text=Answer%20questions%3A%20get%20cats!">
-     Tweet</a>
+         <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Answer%20questions%3A%20get%20cats!">Tweet</a>
     {else}
-    <a class="twitter-share-button"
- href="https://twitter.com/intent/tweet?text={$socialMediaText}">
-Tweet</a>
+    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={$socialMediaText}">Tweet</a>
     {/if}
     {/nocache}
 

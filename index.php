@@ -75,7 +75,6 @@ if(isset($_POST["reward"]) && $_POST["reward"]=="1") {
     }
 
 
-
     //gets a random question
     $questionID = mt_rand(0, count($questions)-1);
 
@@ -105,8 +104,9 @@ if(isset($_POST["reward"]) && $_POST["reward"]=="1") {
 
                 if ($choice->getType() == OptionType::OtherAPI) {
 
-                    if ($choice->getContent()->isRawContent()){ $choices[] = $choice->getContent()->getValueAsOption();}
-                    else {
+                    if ($choice->getContent()->isRawContent()) {
+                        $choices[] = $choice->getContent()->getValueAsOption();
+                    } else {
                         $imageOptionObject = $choice->getContent()->getValueAsOption();
 
                         //keep getting images until you have 4 images
@@ -118,7 +118,7 @@ if(isset($_POST["reward"]) && $_POST["reward"]=="1") {
                     }
                 } elseif ($choice->getType() == OptionType::Color && $choice->getContent() == "random") {
 
-                    //https://stackoverflow.com/a/20218712/3033386
+                    //https://stackoverflow.com/a/20218712/3033386 generates a random color.
                     $str = '#';
                     for ($i = 0; $i < 6; $i++) {
                         $randNum = rand(0, 15);
