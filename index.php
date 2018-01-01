@@ -18,7 +18,12 @@ if(isset($_POST["reward"]) && $_POST["reward"]=="1") {
             $smarty->assign("rewardImgPath", OtherApi::getValueFromAPI('http://random.cat/meow', "file"));
             break;
         case 1:
-            $smarty->assign("rewardImgPath", OtherApi::getValueFromAPI('http://random.dog/woof.json', "url"));
+
+            $dogPath = OtherApi::getValueFromAPI('http://random.dog/woof.json', "url");
+
+            while (Question::isImagePath($dogPath) == false) {$dogPath = OtherApi::getValueFromAPI('http://random.dog/woof.json', "url");}
+
+            $smarty->assign("rewardImgPath", $dogPath);
 
             break;
         default:
