@@ -81,4 +81,13 @@ class OtherApi {
         return $output;
     }
 
+
+    public function getJSON() {
+        $resultArray = array(
+            "apiPath" => $this->getPath(),
+            "apiIndex" => $this->getKey(),
+        );
+
+        return json_encode($resultArray);
+    }
 }

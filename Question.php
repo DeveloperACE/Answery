@@ -107,4 +107,20 @@ class Question {
         }
 
     }
+
+    public function getJSON() {
+        $resultArray = array(
+            "question" => $this->getQuestion(),
+            "imagePath" => $this->getSupplementaryImagePath(),
+            "answerType" => $this->getAnswerType(),
+            "choices" => array(),
+            "numberOfOptions" => $this->getNumberOfOptions()
+        );
+
+        foreach ($this->getAllChoices() as $choice ) {
+            array_push($resultArray["choices"], $choice->getJSON());
+        }
+
+        return json_encode($resultArray);
+    }
 }

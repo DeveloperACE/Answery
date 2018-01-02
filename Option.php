@@ -58,4 +58,14 @@ class Option {
         else {return $this->correct;}
     }
 
+    public function getJSON() {
+        $resultArray = array(
+            "optionType" => $this->getType(),
+            "optionContent" => $this->getContent(),
+            "correct" => $this->isCorrect()
+        );
+
+        return json_encode($resultArray);
+    }
+
 }
