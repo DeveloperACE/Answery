@@ -58,14 +58,15 @@ class Option {
         else {return $this->correct;}
     }
 
-    public function getJSON() {
+    public function getNonObjectDataStructure() {
         $resultArray = array(
             "optionType" => $this->getType(),
-            "optionContent" => $this->getContent(),
-            "correct" => $this->isCorrect()
+            "optionContent" => $this->getContent()//,
+            //comment out correct because it is unimplemented.
+           // "correct" => $this->isCorrect()
         );
 
-        return json_encode($resultArray);
+        return $resultArray;//json_encode($resultArray);
     }
 
 }
