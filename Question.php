@@ -109,17 +109,34 @@ class Question {
     }
 
     public function getJSON() {
+        //required bits
         $resultArray = array(
             "question" => $this->getQuestion(),
-            "imagePath" => $this->getSupplementaryImagePath(),
             "answerType" => $this->getAnswerType(),
-            "choices" => array(),
-            "numberOfOptions" => $this->getNumberOfOptions()
         );
 
-        foreach ($this->getAllChoices() as $choice ) {
-            array_push($resultArray["choices"], $choice->getJSON());
+        if (!is_null($this->getSupplementaryImagePath())) {
+            $resultArray["imagePath"] = $this->getSupplementaryImagePath();
         }
+
+        //should this be if in_array($this->getAnswerType(), Array('multiplechoice'))
+        if(count($this->getAllChoices()) != 0) {
+            $resultArray["choices"] = array();
+
+            foreach ($this->getAllChoices() as $choice ) {
+                array_push($resultArray["choices"], $choice->getNonObjectDataStructure());
+
+            }
+
+        }
+
+            //should this be in the API output???
+            //"numberOfOptions" => $this->getNumberOfOptions()
+
+
+        //TODO: dont output "choices" or "numberOfOptions" if "answerType"
+
+
 
         return json_encode($resultArray);
     }
