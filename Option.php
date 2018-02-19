@@ -13,8 +13,9 @@ abstract class OptionType
  */
 class Option {
 	public $type;
-	public $content;
-    public $correct;
+    public $content;
+//comment out correct because it is unimplemented.
+   // public $correct;
 
 	/**
 	 * Question constructor.
@@ -24,8 +25,9 @@ class Option {
 	 */
 	public function __construct($type, $content, $correct = null) {
 		$this->type = $type;
-		$this->content = $content;
-		$this->correct = $correct;
+        $this->content = $content;
+    //comment out correct because it is unimplemented.
+	//	$this->correct = $correct;
 	}
 
     /** Returns the stored content set in the constructor
