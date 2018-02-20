@@ -11,12 +11,12 @@ require("data.php");
 
 abstract class Errors
 {
-    const invalidID = 0;
-    const requestNotAllowed = 1;
-    const invalidCall = 2;
-    const randomAndIDCombo = 3;
-    const staticAndDynamic = 4;
-    const duplicateArguments = 5;
+    const invalidID = "The ID provided is invalid.";
+    const requestNotAllowed = "This API endpoint is not available.";
+    const invalidCall = "Invalid API Call.";
+    const randomAndIDCombo = "You are not allowed to use the 'random' argument in combination with an ID.";
+    const staticAndDynamic = "You are not allowed to use the 'static' argument in combination with the 'dynamic' argument. Instead just request /questions if you want to get all the questions.";
+    const duplicateArguments = "Duplicate arguments are not allowed.";
    // const unused = 5;
    // const unused = 5;
    // const unused = 5;
@@ -86,56 +86,6 @@ function validateAPICall() {
 
 }
 
-        //$returnObject = handleGET($apiArgArray, 0);
-        //var_dump($returnObject);
-      //  break;
-   /* case 'PUT':       
-        // Replace entire collection or member
-        //unimplemented
-        break;  
-    case 'POST':      
-        // Create new member
-        //unimplemented
-        break;
-    case 'DELETE':    
-        // Delete collection or member
-        //unimplemented
-        break;*/
-
-  //  }
-
-
-
-// function handleGET($apiArray, $index) {
-    
-// }
-
-
-// function handleQuestions($apiArray, $index){
-//     debug_print("Handling Questions Resource Request...");
-
-//     if (isset($apiArray[$index]) && !is_numeric($apiArray[$index])) {
-//         debug_print("\t...is non-numeric");
-//         switch($apiArray[$index]) {
-//             case "random":
-//                 debug_print("\t...is \"random\"");
-//                 return handleRandom(getQuestionSet($apiArray, $index + 1));
-
-//                 break;
-//             default:
-//                 debug_print("\t...is not defined");
-//                 return getQuestionSet($apiArray, $index);//->getJSON();
-//                 break;
-//         }
-//     } else if (isset($apiArray[$index]) && is_numeric($apiArray[$index])) {
-//         debug_print("\t...is numeric");
-        
-//         handleError(Errors::requestNotAllowed);
-//     } else { 
-//         debug_print("\t...no other parameters added");
-//         return getQuestionSet($apiArray, $index);//->getJSON();
-//     }
-// }
 
 function getQuestionSet() {
     global $excitingQuestions, $boringQuestions;
@@ -158,18 +108,9 @@ function checkArgumentsForValue($value){
     return in_array($value, $apiArgArray);
 }
 
-// function checkArgumentsForIDs() {
-//     global $apiArgArray;
-//     foreach ($apiArgArray as $argument){
-//         if (is_numeric($value)){return true;}
-//     }
-//     return false;
-// }
-
 //this function only gets the first ID found in the arguments array and ignores the rest. False if no IDs
 function getIDFromArguments() {
     global $apiArgArray;
-//    debug_print("Getting ID...");
     foreach ($apiArgArray as $argument){
         if (is_numeric($argument)){return $argument;}
     }
@@ -189,37 +130,15 @@ function getRandomQuestionFromList($questionList) {
     return $questionList[$questionID];//->getJSON();
 }
 
-// function validateID($id) {
-//     debug_print("Checking given ID...");
-//     $questionSet = getQuestionSet($apiArray, $index);
-//     if ($id < $questionSet.count) {
-//        debug_print("\t...is a valid ID");
-
-//         return $questionSet[$apiArray[$index]];
-//     } else {
-//         debug_print("\t...is an invalid ID");
-//         handleError(Errors::invalidID);
-//     }
-// }
-
 //when calling this function, plese use the most specific error code.
 function handleError($errorCode) {
     global $returnObject;
     echo "error";
     $errorOutput = array("errorcode" => $errorCode);
-    switch($errorCode) {
-       case Errors::invalidID:
-            $errorOutput["message"] = "The ID provided is invalid.";
-            break;
-        case Errors::requestNotAllowed:
-            $errorOutput["message"] = "This API endpoint is not available.";
-            break;
-        case Errors::invalidCall:
-            $errorOutput["message"] = "Invalid API Call.";
-            break;
-        default: 
-            $errorOutput["message"] = "Something Happened.";
-            break;
+    if ($error !== null) {
+        $errorOutput["message"] = $error;
+    } else {
+        $errorOutput["message"] = "Something Happened.";
     }
 
     $genericHelpMessage = " Please see the documentation on github for more information about this API.";
@@ -242,13 +161,3 @@ function debug_dump($var) {
 
 debug_print("");
 echo json_encode($returnObject);
-
-
-
-//class Api
-//{
-//
-//    public static function idIsValid($id) {return is_int($id) && ($id <= count(self::getAllData()));}
-//
-//
-//}
