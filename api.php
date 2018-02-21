@@ -32,7 +32,7 @@ abstract class Errors
 //code heavily modified from https://stackoverflow.com/a/29460180
 header('Content-Type: application/json');
 
-$debug = true;
+$debug = false;
 
 $apiArgArray = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
 $returnObject = array();
