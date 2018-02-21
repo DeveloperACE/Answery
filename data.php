@@ -54,7 +54,7 @@ $excitingQuestions = array(
         ),
         4
     ),
-    new Question(
+    /*new Question(
         "Which of these words do you like more?",
         null,
         AnswerType::MultipleChoice,
@@ -65,7 +65,7 @@ $excitingQuestions = array(
             )
         ),
         4
-    ),
+    ),*/
     new Question(
         "Which of these dogs is cuter?",
         null,
