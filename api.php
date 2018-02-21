@@ -131,7 +131,9 @@ function getRandomQuestionFromList($questionList) {
 }
 
 //when calling this function, plese use the most specific error code.
-function handleError($errorCode) {
+function handleError($error = null) {
+    //set the header to 400 Bad Request
+    http_response_code(400);
     global $returnObject;
     echo "error";
     $errorOutput = array("errorcode" => $errorCode);
