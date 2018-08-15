@@ -49,7 +49,7 @@ $excitingQuestions = array(
         AnswerType::MultipleChoice,
         array(
             new Option(OptionType::OtherAPI,
-                new OtherApi("http://random.cat/meow", "file")
+                new OtherApi("http://aws.random.cat/meow", "file")
             )
         ),
         4
@@ -101,7 +101,7 @@ $excitingQuestions = array(
     ),
 
     new Question("How cute is this cat?",
-        new OtherApi("http://random.cat/meow", "file"),
+        new OtherApi("http://aws.random.cat/meow", "file"),
         AnswerType::Rating
     ),
     new Question(
